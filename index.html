@@ -345,7 +345,7 @@
   <div class="top-bar">
     <button class="back-btn" onclick="showScreen('screen-login')">←</button>
     <h2>📊 관리자 대시보드</h2>
-    <button class="back-btn" onclick="clearAllData()" title="데이터 초기화" style="font-size:14px">🗑</button>
+    <button onclick="clearAllData()" style="background:rgba(229,62,62,.85);border:none;color:#fff;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">🗑 초기화</button>
   </div>
   <div class="admin-tabs">
     <div class="atab active" onclick="switchTab('overview')">현황 개요</div>
@@ -735,9 +735,27 @@ function checkAdminPw(){
   else{toast(t('toastWrongPw'))}
 }
 function clearAllData(){
-  if(confirm('모든 학습 데이터를 초기화하시겠습니까?')){
-    localStorage.removeItem(KEY);toast(t('toastCleared'));renderAdmin();
-  }
+  // confirm() 대신 커스텀 모달 사용 (모바일 브라우저 차단 우회)
+  const modal = document.createElement('div');
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px';
+  modal.innerHTML = `
+    <div style="background:#fff;border-radius:18px;padding:28px 24px;width:100%;max-width:320px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3)">
+      <div style="font-size:40px;margin-bottom:12px">🗑️</div>
+      <div style="font-size:17px;font-weight:700;color:#1A2B4A;margin-bottom:8px">데이터 초기화</div>
+      <div style="font-size:13px;color:#8898AA;margin-bottom:24px;line-height:1.5">모든 학습 데이터(시청 이력, 퀴즈 점수)가<br>삭제됩니다. 계속하시겠습니까?</div>
+      <div style="display:flex;gap:10px">
+        <button id="modal-cancel" style="flex:1;padding:13px;border:2px solid #E2EBF3;border-radius:10px;background:#fff;color:#1A2B4A;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit">취소</button>
+        <button id="modal-confirm" style="flex:1;padding:13px;border:none;border-radius:10px;background:#E53E3E;color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit">초기화</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+  document.getElementById('modal-cancel').onclick  = () => document.body.removeChild(modal);
+  document.getElementById('modal-confirm').onclick = () => {
+    document.body.removeChild(modal);
+    localStorage.removeItem(KEY);
+    toast('데이터가 초기화되었습니다 ✅');
+    renderAdmin();
+  };
 }
 
 // ── HOME ─────────────────────────────────────────────
