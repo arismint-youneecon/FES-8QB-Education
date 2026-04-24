@@ -911,7 +911,7 @@ function switchTab(t){
 </html>
 <!-- ══ 캡처 방지 CSS + JS ══ -->
 <style>
-  /* iOS/Android 공통: 선택 및 드래그 방지 */
+  /* 텍스트 선택 방지 (입력 필드 제외) */
   body {
     -webkit-user-select: none !important;
     -moz-user-select: none !important;
@@ -919,7 +919,6 @@ function switchTab(t){
     user-select: none !important;
     -webkit-touch-callout: none !important;
   }
-  /* 입력 필드는 선택 허용 */
   input, select, textarea {
     -webkit-user-select: text !important;
     user-select: text !important;
@@ -929,21 +928,20 @@ function switchTab(t){
 // ── 캡처/스크린샷 방지 ──────────────────────────────
 (function(){
 
-  // 1. 우클릭 방지 (데스크탑 & 안드로이드 크롬)
+  // 1. 우클릭 방지
   document.addEventListener('contextmenu', e => e.preventDefault());
 
-  // 2. 키보드 캡처 단축키 방지 (PrintScreen, Ctrl+P, Ctrl+S 등)
+  // 2. 키보드 캡처 단축키 방지
   document.addEventListener('keydown', function(e){
     const blocked = (
       e.key === 'PrintScreen' ||
-      (e.ctrlKey && ['p','s','u','a'].includes(e.key.toLowerCase())) ||
-      (e.metaKey && ['p','s'].includes(e.key.toLowerCase())) // Mac
+      (e.ctrlKey && ['p','s','u'].includes(e.key.toLowerCase())) ||
+      (e.metaKey && ['p','s'].includes(e.key.toLowerCase()))
     );
     if(blocked){ e.preventDefault(); e.stopPropagation(); }
   });
 
-  // 3. iOS Safari: visibilitychange 감지
-  //    홈 버튼 두 번 누르거나 앱 스위처 진입 시 화면 블러 처리
+  // 오버레이 생성
   const overlay = document.createElement('div');
   overlay.id = 'capture-shield';
   overlay.style.cssText = [
@@ -954,34 +952,34 @@ function switchTab(t){
     'font-family:sans-serif','font-size:16px','font-weight:700',
     'text-align:center','padding:40px'
   ].join(';');
-  overlay.innerHTML = '<div style="font-size:48px">🔒</div><div>화면 캡처가 제한되어 있습니다</div><div style="font-size:12px;opacity:.6;margin-top:4px">Screenshot is restricted</div>';
+  overlay.innerHTML = '<div style="font-size:48px">\uD83D\uDD12</div><div>\ud654\uba74 \uce98\uccad\uac00 \uc81c\ud55c\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4</div><div style="font-size:12px;opacity:.6;margin-top:4px">Screenshot is restricted</div>';
   document.body.appendChild(overlay);
 
   function showShield(){ overlay.style.display='flex'; }
   function hideShield(){ overlay.style.display='none'; }
 
-  // 4. Page Visibility API — 앱 스위처 진입 시 블러
+  // 3. Page Visibility API — 앱 스위처/홈 이동 시 가림
+  //    (키보드 입력과 무관하게 탭 숨김 여부로만 판단 → 오작동 없음)
   document.addEventListener('visibilitychange', function(){
     if(document.hidden) showShield();
     else hideShield();
   });
 
-  // 5. iOS blur 이벤트 (홈 버튼, 전화 수신 등)
-  window.addEventListener('blur', showShield);
+  // 4. window blur/focus — 단, 입력 필드에 포커스 중일 때는 무시
+  //    핵심 수정: activeElement가 input/select/textarea이면 blur 무시
+  function isTyping(){
+    const el = document.activeElement;
+    if(!el) return false;
+    return ['INPUT','SELECT','TEXTAREA'].includes(el.tagName);
+  }
+
+  window.addEventListener('blur', function(){
+    if(isTyping()) return;   // ← 키보드 올라올 때 오작동 방지
+    showShield();
+  });
   window.addEventListener('focus', hideShield);
 
-  // 6. Android: DevTools 감지 (크기 차이 이용)
-  let devOpen = false;
-  setInterval(function(){
-    const threshold = 160;
-    const widthDiff  = window.outerWidth  - window.innerWidth;
-    const heightDiff = window.outerHeight - window.innerHeight;
-    const isOpen = widthDiff > threshold || heightDiff > threshold;
-    if(isOpen && !devOpen){ devOpen=true; showShield(); }
-    else if(!isOpen && devOpen){ devOpen=false; hideShield(); }
-  }, 1000);
-
-  // 7. 터치 이벤트 장기 누르기 방지 (이미지 저장 팝업 등)
+  // 5. 터치 이미지 저장 팝업 방지
   document.addEventListener('touchstart', function(e){
     if(e.target.tagName === 'IMG') e.preventDefault();
   }, {passive:false});
