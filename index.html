@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>FES 4.0 Education Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1A2B4A;--blue:#0078B4;--green:#00A854;--light:#F0F6FC;
+    --gray:#8898AA;--border:#E2EBF3;--white:#FFFFFF;
+    --red:#E53E3E;--yellow:#F6AD55;
+    --card-shadow:0 2px 12px rgba(26,43,74,.10);--radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{font-family:'Noto Sans KR',sans-serif;background:#F0F6FC;color:var(--navy);min-height:100vh}
+  .screen{display:none;min-height:100vh;flex-direction:column;animation:fadeIn .25s ease}
+  .screen.active{display:flex}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .top-bar{background:var(--navy);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+  .top-bar h2{font-size:17px;font-weight:700;flex:1}
+  .back-btn{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .badge{background:var(--green);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap}
+  .scroll-body{flex:1;overflow-y:auto;padding:20px 16px 40px}
+
+  /* ── LOGIN ── */
+  #screen-login{background:linear-gradient(160deg,var(--navy) 0%,#0078B4 100%);justify-content:center;align-items:center;padding:40px 24px 24px}
+  .login-logo{text-align:center;margin-bottom:28px}
+  .login-logo .brand{font-family:'Bebas Neue',sans-serif;font-size:52px;color:#fff;letter-spacing:3px;line-height:1}
+  .login-logo .sub{font-size:13px;color:rgba(255,255,255,.6);margin-top:6px;letter-spacing:1px}
+  .login-card{background:#fff;border-radius:20px;padding:28px 24px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  .login-card h3{font-size:20px;font-weight:700;margin-bottom:6px}
+  .login-card p{font-size:13px;color:var(--gray);margin-bottom:24px}
+  .form-group{margin-bottom:16px}
+  .form-group label{font-size:12px;font-weight:700;color:var(--navy);display:block;margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px}
+  .form-group input,.form-group select{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:15px;font-family:inherit;transition:border-color .2s;outline:none;background:#fff;color:var(--navy)}
+  .form-group input:focus,.form-group select:focus{border-color:var(--blue)}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .btn{width:100%;padding:15px;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:transform .1s;font-family:inherit;margin-top:8px}
+  .btn:active{transform:scale(.97)}
+  .btn-navy{background:var(--navy);color:#fff}
+  .btn-green{background:var(--green);color:#fff}
+  .btn-outline{background:#fff;color:var(--navy);border:2px solid var(--border)!important}
+  .admin-link{text-align:center;margin-top:14px;font-size:13px;color:var(--gray)}
+  .admin-link a{color:var(--blue);font-weight:600;cursor:pointer}
+  .lang-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:4px}
+  .lang-btn{padding:0;height:52px;border:1.5px solid var(--border);border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;text-align:center;background:#fff;color:var(--navy);transition:all .15s;line-height:1.3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+  .lang-btn:active{transform:scale(.95)}
+  .lang-btn.selected{border-color:var(--blue);background:#EBF5FF;color:var(--blue)}
+  .app-version{text-align:center;margin-top:16px;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.5px}
+
+  /* ── HOME ── */
+  .user-info-bar{background:#fff;border-radius:var(--radius);padding:16px 18px;display:flex;align-items:center;gap:14px;margin-bottom:20px;box-shadow:var(--card-shadow)}
+  .user-avatar{width:46px;height:46px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff;flex-shrink:0}
+  .user-info-text .uname{font-size:16px;font-weight:700}
+  .user-info-text .uline{font-size:12px;color:var(--gray);margin-top:2px}
+  .prog-wrap{margin-top:7px;background:var(--border);border-radius:6px;height:6px;width:150px}
+  .prog-fill{height:100%;border-radius:6px;background:var(--green);transition:width .4s}
+  .section-title{font-size:12px;font-weight:700;color:var(--gray);letter-spacing:.8px;text-transform:uppercase;margin-bottom:12px}
+  .chapter-card{background:#fff;border-radius:var(--radius);padding:16px 18px;margin-bottom:12px;box-shadow:var(--card-shadow);display:flex;align-items:center;gap:16px;cursor:pointer;transition:transform .15s;border:1.5px solid transparent}
+  .chapter-card:active{transform:scale(.98)}
+  .chapter-card.done{border-color:var(--green)}
+  .ch-num{width:46px;height:46px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;line-height:1.2;text-align:center}
+  .ch-info{flex:1;min-width:0}
+  .ch-code{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.5px;margin-bottom:3px}
+  .ch-name{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ch-nameko{font-size:12px;color:var(--gray);margin-top:2px}
+  .ch-status{font-size:22px;flex-shrink:0}
+  .pills{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap}
+  .pill{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px}
+  .pill-watch{background:#EBF5FF;color:var(--blue)}
+  .pill-nowatch{background:var(--light);color:var(--gray)}
+  .pill-pass{background:#EBF8F1;color:var(--green)}
+  .pill-fail{background:#FFF5F5;color:var(--red)}
+  .pill-none{background:#FFF8F0;color:var(--yellow)}
+
+  /* ── CHAPTER DETAIL ── */
+  .video-box{background:var(--navy);border-radius:var(--radius);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;margin-bottom:16px;cursor:pointer;overflow:hidden;position:relative}
+  .video-box iframe{width:100%;height:100%;border:none}
+  .play-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;gap:10px}
+  .play-icon{font-size:54px}
+  .play-label{font-size:14px;font-weight:700;text-align:center;padding:0 16px}
+  .btn-watch{width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:14px;transition:transform .1s}
+  .btn-watch:active{transform:scale(.97)}
+  .detail-card{background:#fff;border-radius:var(--radius);padding:18px;margin-bottom:14px;box-shadow:var(--card-shadow)}
+  .detail-card h4{font-size:12px;font-weight:700;color:var(--blue);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
+  .detail-card p{font-size:14px;line-height:1.7;color:#444}
+  .detail-card ul{padding-left:18px;font-size:14px;line-height:1.9;color:#444}
+  .point-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+  .point-chip{background:#fff;border-radius:10px;padding:12px 14px;box-shadow:var(--card-shadow)}
+  .point-chip .lbl{font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+  .point-chip .val{font-size:12px;font-weight:600;color:var(--navy);line-height:1.4}
+  .btn-quiz{width:100%;padding:16px;background:var(--green);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .1s}
+  .btn-quiz:active{transform:scale(.97)}
+
+  /* ── QUIZ ── */
+  .quiz-prog-bar{background:var(--border);height:5px;border-radius:5px;margin-bottom:20px}
+  .quiz-prog-fill{height:100%;border-radius:5px;background:var(--blue);transition:width .3s}
+  .quiz-meta{display:flex;justify-content:space-between;margin-bottom:16px}
+  .q-num{font-size:13px;font-weight:700;color:var(--blue)}
+  .q-ch{font-size:12px;color:var(--gray)}
+  .quiz-q{font-size:16px;font-weight:700;line-height:1.65;margin-bottom:24px}
+  .quiz-opts{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+  .opt{padding:14px 16px;border:2px solid var(--border);border-radius:12px;font-size:14px;line-height:1.5;cursor:pointer;transition:all .15s;background:#fff;display:flex;gap:12px;align-items:flex-start}
+  .opt:active{transform:scale(.98)}
+  .opt-lbl{width:26px;height:26px;border-radius:8px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:var(--navy)}
+  .opt.selected{border-color:var(--blue);background:#EBF5FF}
+  .opt.selected .opt-lbl{background:var(--blue);color:#fff}
+  .opt.correct{border-color:var(--green);background:#EBF8F1}
+  .opt.correct .opt-lbl{background:var(--green);color:#fff}
+  .opt.wrong{border-color:var(--red);background:#FFF5F5}
+  .opt.wrong .opt-lbl{background:var(--red);color:#fff}
+  .opt.disabled{cursor:default}
+  .feedback{border-radius:12px;padding:14px 16px;font-size:13px;font-weight:600;margin-bottom:20px;display:none;line-height:1.5}
+  .feedback.show{display:block}
+  .feedback.ok{background:#EBF8F1;color:#276749;border-left:4px solid var(--green)}
+  .feedback.ng{background:#FFF5F5;color:#9B2335;border-left:4px solid var(--red)}
+  .btn-next{width:100%;padding:15px;background:var(--navy);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:transform .1s}
+  .btn-next:active{transform:scale(.97)}
+  .btn-next:disabled{background:var(--border);color:var(--gray);cursor:default}
+
+  /* ── RESULT ── */
+  #screen-result{background:linear-gradient(160deg,var(--navy) 0%,#0078B4 100%);justify-content:center;align-items:center;padding:40px 24px}
+  .result-card{background:#fff;border-radius:20px;padding:36px 24px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.25);text-align:center}
+  .result-icon{font-size:64px;margin-bottom:12px}
+  .result-score{font-family:'Bebas Neue',sans-serif;font-size:80px;line-height:1}
+  .result-total{font-size:32px;color:var(--gray)}
+  .result-label{font-size:22px;font-weight:700;margin:10px 0 6px}
+  .result-sub{font-size:13px;color:var(--gray);margin-bottom:24px}
+  .result-bd{background:var(--light);border-radius:12px;padding:16px;margin-bottom:20px;text-align:left}
+  .result-row{display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px solid var(--border)}
+  .result-row:last-child{border:none}
+  .result-row .rk{color:var(--gray)}
+  .result-row .rv{font-weight:700}
+  .rv.green{color:var(--green)}
+  .rv.red{color:var(--red)}
+
+  /* ── ADMIN ── */
+  #screen-admin{background:var(--light)}
+  .admin-login-wrap{display:flex;justify-content:center;align-items:center;flex:1;padding:24px}
+  .admin-login-card{background:#fff;border-radius:20px;padding:32px 24px;width:100%;max-width:360px;box-shadow:var(--card-shadow)}
+  .admin-login-card h3{font-size:18px;font-weight:700;margin-bottom:20px;text-align:center}
+  .admin-tabs{display:flex;background:#fff;border-bottom:1px solid var(--border)}
+  .atab{flex:1;padding:13px 0;text-align:center;font-size:13px;font-weight:700;color:var(--gray);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s}
+  .atab.active{color:var(--blue);border-bottom-color:var(--blue)}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+  .stat-box{background:#fff;border-radius:var(--radius);padding:16px;text-align:center;box-shadow:var(--card-shadow)}
+  .stat-num{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1}
+  .stat-lbl{font-size:12px;color:var(--gray);font-weight:600;margin-top:4px}
+  .ch-bar{background:#fff;border-radius:var(--radius);padding:16px 18px;margin-bottom:10px;box-shadow:var(--card-shadow)}
+  .ch-bar-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .ch-bar-name{font-size:13px;font-weight:700}
+  .ch-bar-pct{font-size:13px;font-weight:700;color:var(--blue)}
+  .bar-track{background:var(--border);border-radius:6px;height:8px}
+  .bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--green));transition:width .5s}
+  .u-table{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--card-shadow)}
+  .u-head{display:grid;grid-template-columns:1fr 1fr 1fr 70px;background:var(--navy);padding:12px 16px;gap:8px}
+  .u-head span{font-size:11px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.4px}
+  .u-row{display:grid;grid-template-columns:1fr 1fr 1fr 70px;padding:12px 16px;border-bottom:1px solid var(--border);align-items:center;gap:8px}
+  .u-row:last-child{border:none}
+  .u-row:nth-child(even){background:#FAFCFF}
+  .u-row span{font-size:12px}
+  .sbadge{font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px;text-align:center;display:inline-block}
+  .sbadge.pass{background:#EBF8F1;color:var(--green)}
+  .sbadge.fail{background:#FFF5F5;color:var(--red)}
+  .sbadge.none{background:var(--light);color:var(--gray)}
+  .sbadge.star{background:#FFFBEB;color:#D97706}
+  .tab-panel{display:none}
+  .tab-panel.active{display:block}
+  .act-row{display:flex;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border);align-items:flex-start}
+  .act-row:last-child{border:none}
+  .act-time{font-size:11px;color:var(--gray);white-space:nowrap;flex-shrink:0;padding-top:2px}
+  .act-msg{font-size:12px;line-height:1.5}
+  .empty-state{padding:32px;text-align:center;color:var(--gray);font-size:13px}
+
+  /* ── TOAST ── */
+  .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:12px 22px;border-radius:30px;font-size:14px;font-weight:600;opacity:0;transition:all .3s;z-index:9999;pointer-events:none;white-space:nowrap}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media(min-width:480px){.screen{max-width:430px;margin:0 auto;box-shadow:0 0 40px rgba(0,0,0,.15)}body{background:#CBD5E0}}
+</style>
+</head>
+<body>
+
+<!-- ══ LOGIN ══ -->
+<div id="screen-login" class="screen active">
+  <div class="login-logo">
+    <div class="brand">FES <span style="color:var(--green)">4.0</span></div>
+    <div class="sub">FORVIA Excellence System · Education Platform</div>
+  </div>
+  <div class="login-card">
+    <h3 id="lt-title">시작하기</h3>
+    <p id="lt-sub">아래 정보를 입력하고 학습을 시작하세요</p>
+
+    <div class="form-group">
+      <label id="lt-name">이름 / Name</label>
+      <input type="text" id="inp-name" placeholder="홍길동 / John" autocomplete="off">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label id="lt-line">라인명</label>
+        <select id="inp-line">
+          <option value="">-- 선택 --</option>
+          <option>Nu-I #1 Exmani</option><option>GPF</option><option>Nu-I #2 Exmani</option>
+          <option>Nu-I #1</option><option>Nu-I #2</option><option>Main #1</option>
+          <option>Main #2</option><option>FRT</option><option>NX4 CTR</option>
+          <option>NX4 Main</option><option>NX4 #2</option><option>CTR #1</option>
+          <option>CTR #2</option><option>Main #3</option><option>JX Ass'y</option>
+          <option>JX Lambda FRT</option><option>JX SUB</option><option>Lockseam</option>
+          <option>QX RESO</option><option>SX2 RESO</option><option>CTR RESO</option>
+          <option>JX/NX4 RESO</option><option>Kappa 1.6</option>
+          <option>Gamma2 T-GDI #1</option><option>Gamma2 T-GDI #2</option>
+          <option>EX-mani #1</option><option>EX-mani #2</option><option>Gamma I #2</option>
+          <option>UCC</option><option>Kappa UCC</option><option>Auto Stuffing</option>
+          <option>R-ENG</option><option>Gamma MPI #3</option><option>HE Bending</option>
+          <option>Pipe Cutting</option><option>CE Bending</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label id="lt-shift">Shift</label>
+        <select id="inp-shift">
+          <option value="">--</option>
+          <option>A</option><option>B</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label id="lt-lang">언어 선택 / Language</label>
+      <div class="lang-grid">
+        <div class="lang-btn selected" data-lang="ko" onclick="selectLang('ko')">🇰🇷 한국어</div>
+        <div class="lang-btn" data-lang="en" onclick="selectLang('en')">🇺🇸 English</div>
+        <div class="lang-btn" data-lang="vi" onclick="selectLang('vi')">🇻🇳 Tiếng Việt</div>
+        <div class="lang-btn" data-lang="ne" onclick="selectLang('ne')">🇳🇵 नेपाली</div>
+        <div class="lang-btn" data-lang="ru" onclick="selectLang('ru')">🇷🇺 Русский</div>
+        <div class="lang-btn" data-lang="uz" onclick="selectLang('uz')">🇺🇿 O'zbek</div>
+        <div class="lang-btn" data-lang="si" onclick="selectLang('si')">🇱🇰 සිංහල</div>
+        <div class="lang-btn" data-lang="tr" onclick="selectLang('tr')">🇹🇷 Türkçe</div>
+      </div>
+    </div>
+
+    <button class="btn btn-navy" id="lt-btn" onclick="doLogin()">학습 시작 →</button>
+    <div class="admin-link"><a onclick="goAdminLogin()" id="lt-admin">관리자 모드</a></div>
+  </div>
+  <div class="app-version">FES 4.0 Education Platform · v1.1.0 (2026-04-24)</div>
+</div>
+
+<!-- ══ HOME ══ -->
+<div id="screen-home" class="screen">
+  <div class="top-bar">
+    <h2 id="ht-title">📚 FES 4.0 교육</h2>
+    <span id="home-badge" class="badge">0/8</span>
+    <button class="back-btn" onclick="doLogout()" title="logout">↩</button>
+  </div>
+  <div class="scroll-body">
+    <div class="user-info-bar">
+      <div class="user-avatar" id="home-avatar">?</div>
+      <div class="user-info-text">
+        <div class="uname" id="home-name">—</div>
+        <div class="uline" id="home-line">—</div>
+        <div class="prog-wrap"><div class="prog-fill" id="home-prog" style="width:0%"></div></div>
+      </div>
+    </div>
+    <div class="section-title" id="ht-chapters">전체 챕터 (8개)</div>
+    <div id="chapter-list"></div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER DETAIL ══ -->
+<div id="screen-chapter" class="screen">
+  <div class="top-bar">
+    <button class="back-btn" onclick="showScreen('screen-home')">←</button>
+    <h2 id="ch-title">챕터</h2>
+    <span id="ch-badge" class="badge" style="background:var(--blue)">3.01</span>
+  </div>
+  <div class="scroll-body">
+    <div class="video-box" id="video-box"></div>
+    <button class="btn-watch" id="btn-watch" onclick="markWatched()">✅ 시청 완료로 표시하기</button>
+    <div class="detail-card">
+      <h4 id="dc-concept-lbl">핵심 개념</h4>
+      <p id="ch-concept"></p>
+    </div>
+    <div class="point-grid" id="ch-points"></div>
+    <div class="detail-card">
+      <h4 id="dc-req-lbl">최소 기대사항</h4>
+      <ul id="ch-req"></ul>
+    </div>
+    <button class="btn-quiz" id="btn-quiz" onclick="startQuiz()">📝 퀴즈 풀기</button>
+  </div>
+</div>
+
+<!-- ══ QUIZ ══ -->
+<div id="screen-quiz" class="screen">
+  <div class="top-bar">
+    <button class="back-btn" onclick="quitQuiz()">←</button>
+    <h2 id="quiz-title">퀴즈</h2>
+    <span id="quiz-badge" class="badge" style="background:var(--blue)">1/3</span>
+  </div>
+  <div class="scroll-body">
+    <div class="quiz-prog-bar"><div class="quiz-prog-fill" id="q-bar"></div></div>
+    <div class="quiz-meta">
+      <span class="q-num" id="q-num"></span>
+      <span class="q-ch" id="q-ch"></span>
+    </div>
+    <div class="quiz-q" id="q-text"></div>
+    <div class="quiz-opts" id="q-opts"></div>
+    <div class="feedback" id="q-feedback"></div>
+    <button class="btn-next" id="btn-next" onclick="nextQ()" disabled>다음 →</button>
+  </div>
+</div>
+
+<!-- ══ RESULT ══ -->
+<div id="screen-result" class="screen">
+  <div class="result-card">
+    <div class="result-icon" id="r-icon">🎉</div>
+    <div class="result-score"><span id="r-num" style="color:var(--green)">0</span><span class="result-total">/3</span></div>
+    <div class="result-label" id="r-label">합격!</div>
+    <div class="result-sub" id="r-sub"></div>
+    <div class="result-bd" id="r-bd"></div>
+    <button class="btn btn-green" onclick="showScreen('screen-home');renderHome()" id="rb-home">📚 챕터 목록으로</button>
+    <button class="btn btn-outline" style="border:2px solid var(--border)" onclick="retake()" id="rb-retry">🔄 다시 풀기</button>
+  </div>
+</div>
+
+<!-- ══ ADMIN LOGIN ══ -->
+<div id="screen-admin-login" class="screen">
+  <div class="top-bar">
+    <button class="back-btn" onclick="showScreen('screen-login')">←</button>
+    <h2>🔐 관리자 로그인</h2>
+  </div>
+  <div class="admin-login-wrap">
+    <div class="admin-login-card">
+      <h3>🔐 관리자 인증</h3>
+      <div class="form-group">
+        <label>관리자 비밀번호</label>
+        <input type="password" id="admin-pw" placeholder="비밀번호 입력" autocomplete="off" onkeydown="if(event.key==='Enter')checkAdminPw()">
+      </div>
+      <button class="btn btn-navy" onclick="checkAdminPw()">입장하기</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ADMIN DASHBOARD ══ -->
+<div id="screen-admin" class="screen">
+  <div class="top-bar">
+    <button class="back-btn" onclick="showScreen('screen-login')">←</button>
+    <h2>📊 관리자 대시보드</h2>
+    <button class="back-btn" onclick="clearAllData()" title="데이터 초기화" style="font-size:14px">🗑</button>
+  </div>
+  <div class="admin-tabs">
+    <div class="atab active" onclick="switchTab('overview')">현황 개요</div>
+    <div class="atab" onclick="switchTab('chapters')">챕터별</div>
+    <div class="atab" onclick="switchTab('users')">개인별</div>
+  </div>
+  <div class="scroll-body" style="padding-top:16px">
+    <div class="tab-panel active" id="tab-overview">
+      <div class="section-title">전체 현황</div>
+      <div class="stat-grid">
+        <div class="stat-box"><div class="stat-num" id="st-users" style="color:var(--blue)">0</div><div class="stat-lbl">총 학습자</div></div>
+        <div class="stat-box"><div class="stat-num" id="st-pass" style="color:var(--green)">0</div><div class="stat-lbl">합격자 수</div></div>
+        <div class="stat-box"><div class="stat-num" id="st-watch" style="color:var(--navy)">0</div><div class="stat-lbl">영상 시청(누적)</div></div>
+        <div class="stat-box"><div class="stat-num" id="st-star" style="color:var(--yellow)">0</div><div class="stat-lbl">★ 우수(90%↑)</div></div>
+      </div>
+      <div class="section-title">최근 활동</div>
+      <div class="u-table" id="admin-act"></div>
+    </div>
+    <div class="tab-panel" id="tab-chapters">
+      <div class="section-title">챕터별 이수율</div>
+      <div id="admin-ch"></div>
+    </div>
+    <div class="tab-panel" id="tab-users">
+      <div class="section-title">개인별 성적</div>
+      <div class="u-table">
+        <div class="u-head"><span>이름</span><span>라인</span><span>Shift</span><span>결과</span></div>
+        <div id="admin-users"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════════
+// 앱 설정
+// ══════════════════════════════════════════════════
+const APP_VERSION = "v1.1.0";
+const APP_DATE    = "2026-04-24";
+const ADMIN_PW    = "fes2026!";   // ← 관리자 비밀번호 (필요 시 변경)
+
+// ══════════════════════════════════════════════════
+// 다국어 번역 테이블
+// ══════════════════════════════════════════════════
+const I18N = {
+  ko:{
+    loginTitle:"시작하기", loginSub:"아래 정보를 입력하고 학습을 시작하세요",
+    nameLbl:"이름 / Name", lineLbl:"라인명", shiftLbl:"Shift", langLbl:"언어 선택 / Language",
+    startBtn:"학습 시작 →", adminLink:"관리자 모드",
+    homeTitle:"📚 FES 4.0 교육", chaptersLbl:"전체 챕터 (8개)",
+    watchBtn:"✅ 시청 완료로 표시하기", watchedBtn:"✅ 시청 완료됨",
+    conceptLbl:"핵심 개념", reqLbl:"최소 기대사항",
+    quizBtn:"📝 퀴즈 풀기", quizRetryBtn:"🔄 퀴즈 다시 풀기",
+    nextBtn:"다음 문제 →", finishBtn:"결과 보기 🏁",
+    correct:"✅ 정답입니다!", wrong:"❌ 오답입니다. 정답:",
+    pass:"합격!", fail:"불합격", excellent:"★ 우수!",
+    passRate:"정답률", criterion:"합격 기준",
+    result:"결과", chapterLbl:"챕터", correctCount:"맞힌 문제",
+    toHome:"📚 챕터 목록으로", retry:"🔄 다시 풀기",
+    watched:"▶ 시청완료", unwatched:"▶ 미시청", quizNone:"📝 미응시",
+    toastWatched:"시청 완료로 표시됐습니다 ✅", toastAlready:"이미 시청 완료된 챕터입니다",
+    toastFill:"이름, 라인명, Shift를 모두 입력해주세요",
+    toastWrongPw:"비밀번호가 올바르지 않습니다",
+    toastCleared:"데이터가 초기화되었습니다",
+    quitConfirm:"퀴즈를 중단하고 나가시겠습니까?",
+    passMsg:"훌륭합니다!", failMsg:"다시 도전해보세요 (합격 기준: 80%)",
+    lineLabel:"라인", shiftLabel:"Shift",
+  },
+  en:{
+    loginTitle:"Get Started", loginSub:"Enter your info to begin learning",
+    nameLbl:"Name", lineLbl:"Line", shiftLbl:"Shift", langLbl:"Language",
+    startBtn:"Start Learning →", adminLink:"Admin Mode",
+    homeTitle:"📚 FES 4.0 Training", chaptersLbl:"All Chapters (8)",
+    watchBtn:"✅ Mark as Watched", watchedBtn:"✅ Already Watched",
+    conceptLbl:"Key Concept", reqLbl:"Minimum Requirements",
+    quizBtn:"📝 Take Quiz", quizRetryBtn:"🔄 Retake Quiz",
+    nextBtn:"Next →", finishBtn:"See Results 🏁",
+    correct:"✅ Correct!", wrong:"❌ Wrong. Correct answer:",
+    pass:"Passed!", fail:"Failed", excellent:"★ Excellent!",
+    passRate:"Score", criterion:"Pass Criterion",
+    result:"Result", chapterLbl:"Chapter", correctCount:"Correct",
+    toHome:"📚 Back to Chapters", retry:"🔄 Try Again",
+    watched:"▶ Watched", unwatched:"▶ Not Watched", quizNone:"📝 Not Taken",
+    toastWatched:"Marked as watched ✅", toastAlready:"Already marked as watched",
+    toastFill:"Please fill in all fields",
+    toastWrongPw:"Incorrect password",
+    toastCleared:"Data has been cleared",
+    quitConfirm:"Quit the quiz?",
+    passMsg:"Great job!", failMsg:"Try again (Pass: 80%)",
+    lineLabel:"Line", shiftLabel:"Shift",
+  },
+  vi:{
+    loginTitle:"Bắt đầu", loginSub:"Nhập thông tin để bắt đầu học",
+    nameLbl:"Tên", lineLbl:"Dây chuyền", shiftLbl:"Ca làm việc", langLbl:"Ngôn ngữ",
+    startBtn:"Bắt đầu học →", adminLink:"Chế độ quản trị",
+    homeTitle:"📚 Đào tạo FES 4.0", chaptersLbl:"Tất cả chương (8)",
+    watchBtn:"✅ Đánh dấu đã xem", watchedBtn:"✅ Đã xem",
+    conceptLbl:"Khái niệm chính", reqLbl:"Yêu cầu tối thiểu",
+    quizBtn:"📝 Làm bài kiểm tra", quizRetryBtn:"🔄 Làm lại bài kiểm tra",
+    nextBtn:"Tiếp theo →", finishBtn:"Xem kết quả 🏁",
+    correct:"✅ Đúng!", wrong:"❌ Sai. Đáp án đúng:",
+    pass:"Đạt!", fail:"Không đạt", excellent:"★ Xuất sắc!",
+    passRate:"Tỷ lệ đúng", criterion:"Tiêu chuẩn đạt",
+    result:"Kết quả", chapterLbl:"Chương", correctCount:"Câu đúng",
+    toHome:"📚 Quay lại danh sách", retry:"🔄 Làm lại",
+    watched:"▶ Đã xem", unwatched:"▶ Chưa xem", quizNone:"📝 Chưa làm",
+    toastWatched:"Đã đánh dấu xem xong ✅", toastAlready:"Đã xem trước đó rồi",
+    toastFill:"Vui lòng điền đầy đủ thông tin",
+    toastWrongPw:"Mật khẩu không đúng",
+    toastCleared:"Dữ liệu đã được xóa",
+    quitConfirm:"Bạn có muốn thoát khỏi bài kiểm tra không?",
+    passMsg:"Làm tốt lắm!", failMsg:"Thử lại nhé (Đạt: 80%)",
+    lineLabel:"Dây chuyền", shiftLabel:"Ca",
+  },
+  ne:{
+    loginTitle:"सुरु गर्नुहोस्", loginSub:"सिक्न सुरु गर्न जानकारी भर्नुहोस्",
+    nameLbl:"नाम", lineLbl:"लाइन", shiftLbl:"सिफ्ट", langLbl:"भाषा",
+    startBtn:"सिक्न सुरु गर्नुहोस् →", adminLink:"प्रशासक मोड",
+    homeTitle:"📚 FES 4.0 तालिम", chaptersLbl:"सबै अध्याय (8)",
+    watchBtn:"✅ हेरेको रूपमा चिन्ह लगाउनुहोस्", watchedBtn:"✅ हेरिसकेको",
+    conceptLbl:"मुख्य अवधारणा", reqLbl:"न्यूनतम आवश्यकताहरू",
+    quizBtn:"📝 क्विज लिनुहोस्", quizRetryBtn:"🔄 क्विज पुनः लिनुहोस्",
+    nextBtn:"अर्को →", finishBtn:"नतिजा हेर्नुहोस् 🏁",
+    correct:"✅ सही!", wrong:"❌ गलत। सही उत्तर:",
+    pass:"उत्तीर्ण!", fail:"अनुत्तीर्ण", excellent:"★ उत्कृष्ट!",
+    passRate:"सही दर", criterion:"उत्तीर्ण मापदण्ड",
+    result:"नतिजा", chapterLbl:"अध्याय", correctCount:"सही उत्तर",
+    toHome:"📚 अध्याय सूचीमा फर्कनुहोस्", retry:"🔄 फेरि प्रयास गर्नुहोस्",
+    watched:"▶ हेरिसकेको", unwatched:"▶ नहेरेको", quizNone:"📝 नलिएको",
+    toastWatched:"हेरेको रूपमा चिन्ह लगाइयो ✅", toastAlready:"पहिले नै चिन्ह लगाइसकेको",
+    toastFill:"कृपया सबै जानकारी भर्नुहोस्",
+    toastWrongPw:"पासवर्ड गलत छ",
+    toastCleared:"डेटा हटाइयो",
+    quitConfirm:"क्विज छोड्ने?",
+    passMsg:"बधाई!", failMsg:"फेरि प्रयास गर्नुहोस् (उत्तीर्ण: 80%)",
+    lineLabel:"लाइन", shiftLabel:"सिफ्ट",
+  },
+  ru:{
+    loginTitle:"Начать", loginSub:"Введите данные для начала обучения",
+    nameLbl:"Имя", lineLbl:"Линия", shiftLbl:"Смена", langLbl:"Язык",
+    startBtn:"Начать обучение →", adminLink:"Режим администратора",
+    homeTitle:"📚 Обучение FES 4.0", chaptersLbl:"Все главы (8)",
+    watchBtn:"✅ Отметить как просмотрено", watchedBtn:"✅ Уже просмотрено",
+    conceptLbl:"Ключевая концепция", reqLbl:"Минимальные требования",
+    quizBtn:"📝 Пройти тест", quizRetryBtn:"🔄 Пройти тест снова",
+    nextBtn:"Далее →", finishBtn:"Посмотреть результаты 🏁",
+    correct:"✅ Правильно!", wrong:"❌ Неверно. Правильный ответ:",
+    pass:"Зачтено!", fail:"Не зачтено", excellent:"★ Отлично!",
+    passRate:"Процент", criterion:"Критерий зачёта",
+    result:"Результат", chapterLbl:"Глава", correctCount:"Правильных",
+    toHome:"📚 К списку глав", retry:"🔄 Попробовать снова",
+    watched:"▶ Просмотрено", unwatched:"▶ Не просмотрено", quizNone:"📝 Не пройден",
+    toastWatched:"Отмечено как просмотренное ✅", toastAlready:"Уже было отмечено",
+    toastFill:"Заполните все поля",
+    toastWrongPw:"Неверный пароль",
+    toastCleared:"Данные очищены",
+    quitConfirm:"Выйти из теста?",
+    passMsg:"Отличная работа!", failMsg:"Попробуйте снова (Зачёт: 80%)",
+    lineLabel:"Линия", shiftLabel:"Смена",
+  },
+  uz:{
+    loginTitle:"Boshlash", loginSub:"O'qishni boshlash uchun ma'lumot kiriting",
+    nameLbl:"Ism", lineLbl:"Liniya", shiftLbl:"Smenа", langLbl:"Til",
+    startBtn:"O'qishni boshlash →", adminLink:"Administrator rejimi",
+    homeTitle:"📚 FES 4.0 Ta'lim", chaptersLbl:"Barcha bo'limlar (8)",
+    watchBtn:"✅ Ko'rildi deb belgilash", watchedBtn:"✅ Ko'rilgan",
+    conceptLbl:"Asosiy tushuncha", reqLbl:"Minimal talablar",
+    quizBtn:"📝 Testni boshlash", quizRetryBtn:"🔄 Testni qayta topshirish",
+    nextBtn:"Keyingi →", finishBtn:"Natijalarni ko'rish 🏁",
+    correct:"✅ To'g'ri!", wrong:"❌ Noto'g'ri. To'g'ri javob:",
+    pass:"O'tdi!", fail:"O'tmadi", excellent:"★ A'lo!",
+    passRate:"To'g'ri javoblar", criterion:"O'tish mezoni",
+    result:"Natija", chapterLbl:"Bo'lim", correctCount:"To'g'ri",
+    toHome:"📚 Bo'limlar ro'yxatiga", retry:"🔄 Qayta urinish",
+    watched:"▶ Ko'rilgan", unwatched:"▶ Ko'rilmagan", quizNone:"📝 Topshirilmagan",
+    toastWatched:"Ko'rildi deb belgilandi ✅", toastAlready:"Allaqachon belgilangan",
+    toastFill:"Barcha maydonlarni to'ldiring",
+    toastWrongPw:"Parol noto'g'ri",
+    toastCleared:"Ma'lumotlar tozalandi",
+    quitConfirm:"Testdan chiqmoqchimisiz?",
+    passMsg:"Ajoyib!", failMsg:"Qayta urining (O'tish: 80%)",
+    lineLabel:"Liniya", shiftLabel:"Smena",
+  },
+  si:{
+    loginTitle:"ආරම්භ කරන්න", loginSub:"ඉගෙනීම ආරම්භ කිරීමට තොරතුරු ඇතුළත් කරන්න",
+    nameLbl:"නම", lineLbl:"රේඛාව", shiftLbl:"මුර", langLbl:"භාෂාව",
+    startBtn:"ඉගෙනීම ආරම්භ කරන්න →", adminLink:"පරිපාලක මාදිලිය",
+    homeTitle:"📚 FES 4.0 පුහුණුව", chaptersLbl:"සියලු පරිච්ඡේද (8)",
+    watchBtn:"✅ නරඹා ඇති ලෙස සලකුණු කරන්න", watchedBtn:"✅ නරඹා ඇත",
+    conceptLbl:"ප්‍රධාන සංකල්පය", reqLbl:"අවම අවශ්‍යතා",
+    quizBtn:"📝 ප්‍රශ්නාවලිය", quizRetryBtn:"🔄 නැවත ප්‍රශ්නාවලිය",
+    nextBtn:"ඊළඟ →", finishBtn:"ප්‍රතිඵල බලන්න 🏁",
+    correct:"✅ නිවැරදියි!", wrong:"❌ වැරදියි. නිවැරදි පිළිතුර:",
+    pass:"සමත්!", fail:"අසමත්", excellent:"★ විශිෂ්ට!",
+    passRate:"නිවැරදි ප්‍රතිශතය", criterion:"සමත් නිර්ණායකය",
+    result:"ප්‍රතිඵලය", chapterLbl:"පරිච්ඡේදය", correctCount:"නිවැරදි",
+    toHome:"📚 පරිච්ඡේද ලැයිස්තුවට", retry:"🔄 නැවත උත්සාහ කරන්න",
+    watched:"▶ නරඹා ඇත", unwatched:"▶ නරඹා නැත", quizNone:"📝 ගෙන නැත",
+    toastWatched:"නරඹා ඇති ලෙස සලකුණු කෙරිණි ✅", toastAlready:"දැනටමත් සලකුණු කර ඇත",
+    toastFill:"කරුණාකර සියලු තොරතුරු පුරවන්න",
+    toastWrongPw:"මුරපදය වැරදියි",
+    toastCleared:"දත්ත මකා දමන ලදී",
+    quitConfirm:"ප්‍රශ්නාවලියෙන් ඉවත් වෙනවාද?",
+    passMsg:"නියමයි!", failMsg:"නැවත උත්සාහ කරන්න (සමත්: 80%)",
+    lineLabel:"රේඛාව", shiftLabel:"මුර",
+  },
+  tr:{
+    loginTitle:"Başla", loginSub:"Öğrenmeye başlamak için bilgilerini gir",
+    nameLbl:"Ad Soyad", lineLbl:"Hat", shiftLbl:"Vardiya", langLbl:"Dil",
+    startBtn:"Öğrenmeye Başla →", adminLink:"Yönetici Modu",
+    homeTitle:"📚 FES 4.0 Eğitim", chaptersLbl:"Tüm Bölümler (8)",
+    watchBtn:"✅ İzlendi Olarak İşaretle", watchedBtn:"✅ Zaten İzlendi",
+    conceptLbl:"Temel Kavram", reqLbl:"Minimum Gereksinimler",
+    quizBtn:"📝 Teste Başla", quizRetryBtn:"🔄 Testi Tekrarla",
+    nextBtn:"Sonraki →", finishBtn:"Sonuçları Gör 🏁",
+    correct:"✅ Doğru!", wrong:"❌ Yanlış. Doğru cevap:",
+    pass:"Geçti!", fail:"Kaldı", excellent:"★ Mükemmel!",
+    passRate:"Başarı Oranı", criterion:"Geçme Kriteri",
+    result:"Sonuç", chapterLbl:"Bölüm", correctCount:"Doğru",
+    toHome:"📚 Bölüm Listesine Dön", retry:"🔄 Tekrar Dene",
+    watched:"▶ İzlendi", unwatched:"▶ İzlenmedi", quizNone:"📝 Alınmadı",
+    toastWatched:"İzlendi olarak işaretlendi ✅", toastAlready:"Zaten işaretlenmiş",
+    toastFill:"Lütfen tüm alanları doldurun",
+    toastWrongPw:"Şifre yanlış",
+    toastCleared:"Veriler temizlendi",
+    quitConfirm:"Testten çıkmak istiyor musunuz?",
+    passMsg:"Harika iş!", failMsg:"Tekrar deneyin (Geçme: %80)",
+    lineLabel:"Hat", shiftLabel:"Vardiya",
+  },
+};
+
+// ══════════════════════════════════════════════════
+// CHAPTER DATA
+// ══════════════════════════════════════════════════
+const CHAPTERS=[
+  {id:"3.01",name:"FAST",nameKo:"First Apply STandard",color:"#0078B4",
+   concept:"문제 발생 시 가장 먼저 표준(작업 지침, 파라미터, TPM 등)의 준수 여부를 확인하는 프로세스입니다. 대부분의 공정 이슈는 표준 위반에서 발생합니다.",
+   conceptEn:"When a problem occurs, first verify whether standards (WI, parameters, TPM, etc.) are being followed. Most process issues stem from standard deviations.",
+   points:[{l:"WHY",v:"공정 변동·결함·스크랩·재작업 감소"},{l:"WHO",v:"GAP/Group Leader 또는 라인 기술자"},{l:"WHEN",v:"Stop at defect, 편차 임계치 도달 시"},{l:"결과",v:"표준 준수→해결 / 미준수→Kata QRCI"}],
+   req:["FAST 트리거 규칙이 정의되어 있고 작업자가 인지","FAST 수행 결과가 기록"],
+   // videoUrl: 언어별로 다른 URL을 등록 (빈 문자열은 영상 없음)
+   videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
+   qIdx:[0,1,2]},
+  {id:"3.02",name:"Poka Yoke",nameKo:"포카요케 (실수 방지)",color:"#00A854",
+   concept:"사람은 실수를 하므로, Poka Yoke(실수 방지 장치)는 핵심 제품 특성의 적합성을 자동으로 보장합니다.",
+   conceptEn:"Since people make mistakes, Poka Yoke (error-proofing devices) automatically ensure conformity of key product characteristics.",
+   points:[{l:"WHY",v:"결함 생성 방지 및 불량품 다음 공정 차단"},{l:"WHO",v:"자격을 갖춘 작업자"},{l:"WHEN",v:"교대 시작, 모델 변경 후, 고장 후"},{l:"고장 시",v:"반응 규칙→Backup Mode 없으면 생산 정지"}],
+   req:["자격자가 지침에 따라 Poka Yoke 검증 수행","Padlock으로 상태 가시적 표시","Red/Green Rabbit 교정·전용 구역 보관"],
+   videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
+   qIdx:[3,4,5]},
+  {id:"3.03",name:"OK First Part",nameKo:"OK 초품 확인",color:"#D97706",
+   concept:"모든 생산 공정은 변동이 있으므로, 안전한 조건에서 양품을 생산할 수 있는지 교대 시작 전 정기적으로 확인합니다.",
+   conceptEn:"Since all processes have variation, regularly verify that safe conditions exist for producing good parts before each shift starts.",
+   points:[{l:"WHY",v:"안전한 조건에서 양품 생산 준비 확인"},{l:"WHO",v:"자격자 수행 / GAP Leader or Supervisor 검증"},{l:"WHEN",v:"교대 시작, 모델 변경 후, 고장/정지 후"},{l:"필수 항목",v:"HSE 안전 · Polyvalence · 5S"}],
+   req:["자격자가 체크시트에 OK/NOK 명확히 기록","4 Eyes Principle 준수","결과가 라인에서 가시적으로 표시"],
+   videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
+   qIdx:[6,7]},
+  {id:"3.04",name:"Check-Do-Check",nameKo:"확인-실행-확인",color:"#E53E3E",
+   concept:"작업자가 검사관 역할을 하여 불량을 받지도·만들지도·넘기지도 않는 인라인 검사 절차입니다.",
+   conceptEn:"Operators act as inspectors: do not accept, create, or pass on defects.",
+   points:[{l:"Check(앞)",v:"이전 공정 부품 확인 — 결함 수용 금지"},{l:"Do",v:"작업 지침에 따라 정확히 작업 수행"},{l:"Check(뒤)",v:"작업 후 확인 — 결함 전달 금지"},{l:"결함 발견",v:"식별→기록→Bin 분리→반응 규칙"}],
+   req:["작업 지침에 검사 항목·합격 기준 기술","작업자가 반응 규칙 숙지","결함 발견 시 결함명과 함께 즉시 기록"],
+   videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
+   qIdx:[8,9,10]},
+  {id:"3.05",name:"Final Inspection",nameKo:"최종 검사",color:"#805AD5",
+   concept:"고객에게 제품이 도달하기 전 수행하는 마지막 수동/육안 검사입니다. TQW는 임시 추가 검사이며 반드시 제거 계획을 수립해야 합니다.",
+   conceptEn:"The last manual/visual inspection before products reach the customer. TQW is a temporary additional inspection — a removal plan is mandatory.",
+   points:[{l:"WHO",v:"Gauge R&R 통과 + Polyvalence Level U"},{l:"항목 수",v:"최대 15개 권장, Takt Time 초과 금지"},{l:"TQW",v:"임시 조치 — 1년 이상 유지 불가"},{l:"결함 발견",v:"생산 공정에 즉시 피드백"}],
+   req:["검사 항목 ≤ 15개","검사 사이클 타임 < 라인 목표","TQW 제거를 위한 Action Plan 존재"],
+   videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
+   qIdx:[11,12]},
+  {id:"3.06",name:"Non-Conformance",nameKo:"부적합품 관리",color:"#2B6CB0",
+   concept:"부적합 또는 의심 부품이 공장 내에서 올바르게 관리되어 양품만이 다음 공정과 고객에게 전달되도록 보장하는 프로세스입니다.",
+   conceptEn:"Ensure non-conforming or suspect parts are properly managed so only good parts reach the next process and the customer.",
+   points:[{l:"Yellow Label",v:"재작업 가능 NOK → Yellow Bin"},{l:"Red Label",v:"재작업 불가 NOK → Red Bin → 스크랩"},{l:"등록",v:"스크랩은 다음 교대 전까지 ERP 등록"},{l:"격리 구역",v:"책임자 정의, 잠금 관리"}],
+   req:["작업자가 부적합품 처리 방법 설명 가능","스크랩이 결함명과 함께 ERP에 등록","격리 구역 관리 (식별·잠금·입출고 기록)"],
+   videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
+   qIdx:[13,14]},
+  {id:"3.07",name:"Rework Under Control",nameKo:"재작업 관리",color:"#6B46C1",
+   concept:"부적합 제품의 스크랩을 줄이고 비품질 비용을 절감하기 위한 관리된 재작업/수리/회수 프로세스입니다.",
+   conceptEn:"A controlled rework/repair/recovery process to reduce scrap and non-quality costs.",
+   points:[{l:"Rework",v:"원래 사양으로 복원 (표준화 필수)"},{l:"Repair",v:"사양과 다르게 복원 → 고객 승인 필수"},{l:"검증",v:"재작업자 ≠ 최종 검증자 (4 Eyes)"},{l:"기록",v:"부품 마킹 + 결함명 기록 필수"}],
+   req:["재작업 작업 지침(WI) 가용","자격자(Level L) 수행","오프라인 재작업 부품 개별 마킹 및 기록"],
+   videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
+   qIdx:[15,16]},
+  {id:"5.07",name:"Kata QRCI",nameKo:"빠른 대응 지속 개선",color:"#00A854",
+   concept:"GAP/Group Leader가 매일 수행하는 문제 해결·지속 개선 활동입니다. PDCA 사이클을 반복 수련하여 습관화합니다.",
+   conceptEn:"A daily problem-solving and continuous improvement activity performed by GAP/Group Leaders using repeated PDCA cycles.",
+   points:[{l:"1단계",v:"방향 설정 — 무엇을 해결할 것인가?"},{l:"2단계",v:"현재 상황 파악 — 지금 어디 있는가?"},{l:"3단계",v:"목표 상태 설정 — 어디로 갈 것인가?"},{l:"4단계",v:"PDCA 실험 — 장애물에 대한 반복 실험"}],
+   req:["정의된 반응 규칙에 따라 Kata QRCI 개시","표준 프로세스에 따라 활동 수행","GAP Leader 80%가 주 1회 이상 mLean에서 개시"],
+   videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
+   qIdx:[17,18,19]},
+];
+
+// ══════════════════════════════════════════════════
+// QUIZ (한국어 기준 — 추후 언어별 번역 확장 가능)
+// ══════════════════════════════════════════════════
+const QUIZ=[
+  {ch:"3.01",q:"현장에서 문제가 발생했을 때 FAST의 첫 번째 행동으로 올바른 것은?",o:["작업을 멈추고 표준(작업 지침, 파라미터 등)이 제대로 지켜지고 있는지 확인한다","즉시 라인을 멈추고 관리자에게 보고한다","불량품을 빠르게 골라내어 창고에 보관한다","생산 속도를 낮추고 계속 생산한다"],a:0},
+  {ch:"3.01",q:"FAST(표준 우선 적용)는 주로 누가 수행하는가?",o:["품질 부서 전담 검사원","GAP/Group Leader 또는 라인 기술자","공장장","고객사 담당자"],a:1},
+  {ch:"3.01",q:"FAST 확인 결과 표준을 잘 지켰는데도 문제가 해결되지 않을 때 다음 단계는?",o:["그냥 생산을 계속한다","작업자를 교체한다","Kata QRCI를 개시하여 원인을 추가 조사한다","해당 제품 전량을 스크랩 처리한다"],a:2},
+  {ch:"3.02",q:"Poka Yoke(포카요케)를 사용하는 가장 큰 이유는 무엇인가?",o:["생산 속도를 높이기 위해","사람은 실수할 수 있으므로 불량품 생산을 자동으로 방지·감지하기 위해","작업자 교육 시간을 줄이기 위해","재고를 줄이기 위해"],a:1},
+  {ch:"3.02",q:"Poka Yoke 장치가 고장 났을 때 Backup Mode가 없다면 어떻게 해야 하는가?",o:["불량이 나더라도 일단 생산을 계속한다","작업자가 직접 판단하여 검사한다","생산을 멈춰야 한다","Final Inspection에서 걸러내면 된다"],a:2},
+  {ch:"3.02",q:"Poka Yoke 검증 후 라인 또는 스테이션에 표시하는 것은 무엇인가?",o:["빨간색 경고등","Padlock(자물쇠 표시)","불량 수량 기록표","작업 완료 스티커"],a:1},
+  {ch:"3.03",q:"OK First Part(OK 초품 확인)는 언제 수행하는가?",o:["한 달에 한 번 정기적으로","교대 시작 시, 모델 변경 후, 설비 고장 복구 후","불량이 발생한 후에만","고객 감사가 있을 때만"],a:1},
+  {ch:"3.03",q:"OK First Part 체크시트를 작성할 때 각 항목에 반드시 표시해야 하는 것은?",o:["작업자의 느낌(좋음/나쁨)","각 항목의 OK 또는 NOK 상태","생산 수량 목표","고객사 연락처"],a:1},
+  {ch:"3.04",q:"Check-Do-Check에서 작업자의 역할을 가장 잘 설명한 것은?",o:["생산 목표 달성에만 집중한다","작업 전후로 직접 확인하여 불량을 받지도, 만들지도, 넘기지도 않는다","Final Inspection 담당자에게 검사를 맡긴다","불량이 발생하면 그냥 다음 공정으로 넘긴다"],a:1},
+  {ch:"3.04",q:"작업 중 불량품을 발견했을 때 가장 먼저 해야 할 행동은?",o:["일단 다음 공정으로 넘기고 나중에 보고한다","불량품임을 표시하고 정해진 빈(Bin)에 분리 보관한다","스스로 판단하여 수리한 뒤 계속 생산한다","교대가 끝날 때 한꺼번에 보고한다"],a:1},
+  {ch:"3.04",q:"Check-Do-Check에서 Tally Sheet(집계표)를 사용하는 목적은?",o:["작업자의 출퇴근 시간을 기록하기 위해","발견된 불량의 종류와 수량을 기록하기 위해","생산 목표 달성 여부를 표시하기 위해","설비 고장 이력을 관리하기 위해"],a:1},
+  {ch:"3.05",q:"Final Inspection(최종 검사)은 언제 수행하는가?",o:["원자재가 입고될 때","생산 공정 중간에 수시로","마지막 조립 단계가 끝난 후 포장 전","제품이 고객에게 납품된 후"],a:2},
+  {ch:"3.05",q:"TQW(임시 품질 검사대)는 어떤 상황에서 설치하는가?",o:["생산 공정이 안정되지 않아 고객에게 불량이 나갈 위험이 있을 때","생산 속도를 높이기 위해 영구적으로 설치한다","작업자 수가 부족할 때 대신 검사하기 위해","신제품 출시 기념으로 설치한다"],a:0},
+  {ch:"3.06",q:"불량품(NOK 부품)을 발견했을 때 가장 먼저 해야 할 행동은?",o:["불량임을 표시하고 즉시 양품과 분리한다","생산 흐름을 방해하지 않도록 그냥 둔다","교대 종료 후 한꺼번에 처리한다","Final Inspection 담당자에게 넘긴다"],a:0},
+  {ch:"3.06",q:"재작업이 가능한 불량품에 붙이는 라벨 색상은?",o:["빨간색(Red)","초록색(Green)","노란색(Yellow)","파란색(Blue)"],a:2},
+  {ch:"3.07",q:"오프라인 재작업(Off-line Rework)에 대한 설명으로 올바른 것은?",o:["라인에서 하기 어려운 재작업을 별도 전용 스테이션에서 수행한다","누구든지 빈 공간에서 자유롭게 수행할 수 있다","재작업 후 별도 검사 없이 바로 공정에 투입한다","재작업 결과는 기록하지 않아도 된다"],a:0},
+  {ch:"3.07",q:"재작업한 부품에 반드시 결함 내용을 기록해야 하는 이유는?",o:["작업자 성과 평가에 활용하기 위해","향후 고객 불만이나 보증 반품 발생 시 추적할 수 있도록 하기 위해","재작업 비용을 고객에게 청구하기 위해","기록은 의무가 아니라 권장 사항이다"],a:1},
+  {ch:"5.07",q:"Kata QRCI는 주로 언제 현장에서 활용하는가?",o:["연간 목표를 수립할 때 한 번","고객 감사가 있을 때만","문제가 발생하거나 개선이 필요할 때 매일 반복적으로","신입 직원 교육 시에만"],a:2},
+  {ch:"5.07",q:"Kata QRCI는 어떤 사이클을 반복하며 문제를 해결하는가?",o:["보고→승인→실행→완료","계획(Plan)→실행(Do)→확인(Check)→조치(Act)","발견→격리→폐기→재주문","회의→결정→지시→평가"],a:1},
+  {ch:"5.07",q:"Kata QRCI에서 중요하게 여기는 팀 참여 원칙으로 올바른 것은?",o:["관리자만 아이디어를 제안할 수 있다","작업자의 의견은 참고만 하고 결정은 관리자가 한다","현장 작업자의 의견이 핵심이다. 그들이 공정을 가장 잘 알기 때문이다","외부 전문가의 의견을 가장 중요하게 반영한다"],a:2},
+];
+
+// ══════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════
+let user=null, curChIdx=-1, curLang="ko";
+let QS={qs:[],cur:0,score:0,chId:""};
+const KEY="fes40_v2";
+
+function t(k){return(I18N[curLang]||I18N.ko)[k]||I18N.ko[k]||k}
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{users:{},log:[]}}catch{return{users:{},log:[]}}}
+function save(d){localStorage.setItem(KEY,JSON.stringify(d))}
+function getU(uid){const d=load();if(!d.users[uid])d.users[uid]={};return{d,u:d.users[uid]}}
+function uid(){return`${user.name}_${user.line}_${user.shift}`}
+function log(msg){const d=load();d.log=d.log||[];d.log.unshift({t:new Date().toLocaleString('ko'),m:msg});if(d.log.length>80)d.log=d.log.slice(0,80);save(d)}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+let toastT;
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2800)}
+
+// ── 언어 선택 ──────────────────────────────────────
+function selectLang(lang){
+  curLang=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('selected',b.dataset.lang===lang));
+  applyI18nLogin();
+}
+function applyI18nLogin(){
+  const s=id=>document.getElementById(id);
+  s('lt-title').textContent=t('loginTitle');
+  s('lt-sub').textContent=t('loginSub');
+  s('lt-name').textContent=t('nameLbl');
+  s('lt-line').textContent=t('lineLbl');
+  s('lt-shift').textContent=t('shiftLbl');
+  s('lt-lang').textContent=t('langLbl');
+  s('lt-btn').textContent=t('startBtn');
+  s('lt-admin').textContent=t('adminLink');
+}
+function applyI18nApp(){
+  const s=id=>document.getElementById(id);
+  s('ht-title').textContent=t('homeTitle');
+  s('ht-chapters').textContent=t('chaptersLbl');
+  s('dc-concept-lbl').textContent=t('conceptLbl');
+  s('dc-req-lbl').textContent=t('reqLbl');
+  s('btn-next').textContent=t('nextBtn');
+  s('rb-home').textContent=t('toHome');
+  s('rb-retry').textContent=t('retry');
+}
+
+// ── 로그인 ──────────────────────────────────────────
+function doLogin(){
+  const name=document.getElementById('inp-name').value.trim();
+  const line=document.getElementById('inp-line').value;
+  const shift=document.getElementById('inp-shift').value;
+  if(!name||!line||!shift){toast(t('toastFill'));return}
+  user={name,line,shift,lang:curLang};
+  const {d,u}=getU(uid());
+  u.name=name;u.line=line;u.shift=shift;save(d);
+  applyI18nApp();
+  renderHome();
+  showScreen('screen-home');
+}
+function doLogout(){user=null;showScreen('screen-login')}
+
+// ── 관리자 로그인 ────────────────────────────────────
+function goAdminLogin(){showScreen('screen-admin-login')}
+function checkAdminPw(){
+  const pw=document.getElementById('admin-pw').value;
+  if(pw===ADMIN_PW){document.getElementById('admin-pw').value='';renderAdmin();showScreen('screen-admin')}
+  else{toast(t('toastWrongPw'))}
+}
+function clearAllData(){
+  if(confirm('모든 학습 데이터를 초기화하시겠습니까?')){
+    localStorage.removeItem(KEY);toast(t('toastCleared'));renderAdmin();
+  }
+}
+
+// ── HOME ─────────────────────────────────────────────
+function renderHome(){
+  const {u}=getU(uid());
+  document.getElementById('home-avatar').textContent=user.name[0];
+  document.getElementById('home-name').textContent=user.name;
+  document.getElementById('home-line').textContent=`${t('lineLabel')}: ${user.line}  |  ${t('shiftLabel')}: ${user.shift}`;
+  let done=0;
+  CHAPTERS.forEach(ch=>{if(u.w?.[ch.id]&&u.qd?.[ch.id])done++});
+  document.getElementById('home-badge').textContent=`${done}/8`;
+  document.getElementById('home-prog').style.width=`${(done/8)*100}%`;
+  const list=document.getElementById('chapter-list');
+  list.innerHTML='';
+  CHAPTERS.forEach((ch,i)=>{
+    const watched=!!u.w?.[ch.id],qDone=!!u.qd?.[ch.id],score=u.qs?.[ch.id],total=ch.qIdx.length;
+    const card=document.createElement('div');
+    card.className='chapter-card'+(watched&&qDone?' done':'');
+    card.onclick=()=>openChapter(i);
+    const wPill=watched?`<span class="pill pill-watch">${t('watched')}</span>`:`<span class="pill pill-nowatch">${t('unwatched')}</span>`;
+    let qPill=`<span class="pill pill-none">${t('quizNone')}</span>`;
+    if(qDone&&score!==undefined){const p=Math.round((score/total)*100);qPill=p>=80?`<span class="pill pill-pass">✅ ${score}/${total}</span>`:`<span class="pill pill-fail">❌ ${score}/${total}</span>`}
+    card.innerHTML=`<div class="ch-num" style="background:${ch.color}22;color:${ch.color}">${ch.id}</div>
+      <div class="ch-info"><div class="ch-code">${ch.id}</div><div class="ch-name">${ch.name}</div><div class="ch-nameko">${ch.nameKo}</div><div class="pills">${wPill}${qPill}</div></div>
+      <div class="ch-status">${watched&&qDone?'✅':'›'}</div>`;
+    list.appendChild(card);
+  });
+}
+
+// ── CHAPTER DETAIL ───────────────────────────────────
+function openChapter(i){
+  curChIdx=i;const ch=CHAPTERS[i];
+  const {u}=getU(uid());
+  const watched=!!u.w?.[ch.id],qDone=!!u.qd?.[ch.id],score=u.qs?.[ch.id];
+  document.getElementById('ch-title').textContent=ch.name;
+  document.getElementById('ch-badge').textContent=ch.id;
+  // 언어에 맞는 영상 URL 선택
+  const vurl=ch.videoUrls?.[curLang]||ch.videoUrls?.ko||"";
+  const vb=document.getElementById('video-box');
+  if(vurl){vb.innerHTML=`<iframe src="${vurl}" allowfullscreen></iframe>`}
+  else{vb.innerHTML=`<div class="play-overlay" onclick="markWatched()"><div class="play-icon">▶</div><div class="play-label">${ch.name}<br><small style="font-weight:400;font-size:11px">${curLang!=='ko'?'['+curLang.toUpperCase()+'] ':''} ← 터치하면 시청 완료</small></div></div>`}
+  const bw=document.getElementById('btn-watch');
+  bw.textContent=watched?t('watchedBtn'):t('watchBtn');
+  bw.style.background=watched?'#718096':'var(--blue)';
+  // 개념 (영어 이외 언어는 conceptEn 표시, ko는 concept)
+  document.getElementById('ch-concept').textContent=curLang==='ko'?ch.concept:ch.conceptEn;
+  document.getElementById('ch-points').innerHTML=ch.points.map(p=>`<div class="point-chip"><div class="lbl">${p.l}</div><div class="val">${p.v}</div></div>`).join('');
+  document.getElementById('ch-req').innerHTML=ch.req.map(r=>`<li>${r}</li>`).join('');
+  const bq=document.getElementById('btn-quiz');
+  bq.textContent=qDone?`${t('quizRetryBtn')} (${score}/${ch.qIdx.length})`:t('quizBtn');
+  showScreen('screen-chapter');
+}
+function markWatched(){
+  const ch=CHAPTERS[curChIdx];
+  const {d,u}=getU(uid());
+  if(!u.w)u.w={};
+  if(!u.w[ch.id]){u.w[ch.id]=true;save(d);log(`${user.name} [${user.line}/${user.shift}] → [${ch.id}] 영상 시청`);toast(t('toastWatched'))}
+  else toast(t('toastAlready'));
+  const bw=document.getElementById('btn-watch');
+  bw.textContent=t('watchedBtn');bw.style.background='#718096';
+}
+
+// ── QUIZ ─────────────────────────────────────────────
+function startQuiz(){
+  const ch=CHAPTERS[curChIdx];
+  QS={qs:ch.qIdx.map(i=>QUIZ[i]),cur:0,score:0,chId:ch.id};
+  renderQ();showScreen('screen-quiz');
+}
+function renderQ(){
+  const {qs,cur}=QS,q=qs[cur],total=qs.length;
+  document.getElementById('quiz-title').textContent=CHAPTERS[curChIdx].name;
+  document.getElementById('quiz-badge').textContent=`${cur+1}/${total}`;
+  document.getElementById('q-bar').style.width=`${(cur/total)*100}%`;
+  document.getElementById('q-num').textContent=`Q${cur+1}`;
+  document.getElementById('q-ch').textContent=q.ch;
+  document.getElementById('q-text').textContent=q.q;
+  const labels=['①','②','③','④'];
+  document.getElementById('q-opts').innerHTML=q.o.map((o,i)=>`<div class="opt" onclick="pickOpt(${i})"><span class="opt-lbl">${labels[i]}</span><span>${o}</span></div>`).join('');
+  document.getElementById('q-feedback').className='feedback';
+  const bn=document.getElementById('btn-next');
+  bn.disabled=true;bn.textContent=cur===total-1?t('finishBtn'):t('nextBtn');
+}
+function pickOpt(sel){
+  const q=QS.qs[QS.cur];
+  document.querySelectorAll('.opt').forEach(o=>{o.classList.remove('selected','correct','wrong');o.classList.add('disabled');o.onclick=null});
+  const opts=document.querySelectorAll('.opt');
+  opts[sel].classList.add(sel===q.a?'correct':'wrong');
+  if(sel!==q.a)opts[q.a].classList.add('correct');
+  const fb=document.getElementById('q-feedback');
+  if(sel===q.a){QS.score++;fb.className='feedback ok show';fb.textContent=t('correct')}
+  else{fb.className='feedback ng show';fb.textContent=`${t('wrong')} "${q.o[q.a]}"`}
+  QS.cur++;
+  document.getElementById('btn-next').disabled=false;
+}
+function nextQ(){
+  if(QS.cur<QS.qs.length){renderQ();window.scrollTo(0,0)}else finishQuiz();
+}
+function finishQuiz(){
+  const total=QS.qs.length,score=QS.score,pct=Math.round((score/total)*100),pass=pct>=80;
+  const ch=CHAPTERS[curChIdx];
+  const {d,u}=getU(uid());
+  if(!u.qs)u.qs={};if(!u.qd)u.qd={};
+  u.qs[ch.id]=Math.max(score,u.qs[ch.id]??0);u.qd[ch.id]=true;save(d);
+  log(`${user.name} [${user.line}/${user.shift}] → [${ch.id}] 퀴즈 ${score}/${total}점 (${pass?'합격':'불합격'})`);
+  document.getElementById('r-icon').textContent=pct>=90?'🏆':pass?'🎉':'😢';
+  document.getElementById('r-num').textContent=score;
+  document.getElementById('r-num').style.color=pass?'var(--green)':'var(--red)';
+  document.querySelector('.result-total').textContent=`/${total}`;
+  document.getElementById('r-label').textContent=pct>=90?t('excellent'):pass?t('pass'):t('fail');
+  document.getElementById('r-sub').textContent=`${t('passRate')} ${pct}% — ${pass?t('passMsg'):t('failMsg')}`;
+  document.getElementById('r-bd').innerHTML=`
+    <div class="result-row"><span class="rk">${t('chapterLbl')}</span><span class="rv">${ch.id} ${ch.name}</span></div>
+    <div class="result-row"><span class="rk">${t('correctCount')}</span><span class="rv ${pass?'green':'red'}">${score}/${total}</span></div>
+    <div class="result-row"><span class="rk">${t('passRate')}</span><span class="rv ${pass?'green':'red'}">${pct}%</span></div>
+    <div class="result-row"><span class="rk">${t('criterion')}</span><span class="rv">80%</span></div>
+    <div class="result-row"><span class="rk">${t('result')}</span><span class="rv ${pass?'green':'red'}">${pass?t('pass'):t('fail')}</span></div>`;
+  document.getElementById('rb-home').textContent=t('toHome');
+  document.getElementById('rb-retry').textContent=t('retry');
+  showScreen('screen-result');
+}
+function retake(){QS.cur=0;QS.score=0;QS.qs=CHAPTERS[curChIdx].qIdx.map(i=>QUIZ[i]);renderQ();showScreen('screen-quiz')}
+function quitQuiz(){if(confirm(t('quitConfirm')))showScreen('screen-chapter')}
+
+// ── ADMIN ─────────────────────────────────────────────
+function renderAdmin(){
+  const d=load();const users=d.users||{};const uids=Object.keys(users);
+  let totalQ=0,passC=0,watchC=0,starC=0;
+  uids.forEach(uid=>{
+    const u=users[uid];
+    watchC+=Object.keys(u.w||{}).length;
+    CHAPTERS.forEach(ch=>{const sc=u.qs?.[ch.id];if(sc!==undefined){const p=Math.round((sc/ch.qIdx.length)*100);totalQ++;if(p>=80)passC++;if(p>=90)starC++}});
+  });
+  document.getElementById('st-users').textContent=uids.length;
+  document.getElementById('st-pass').textContent=passC;
+  document.getElementById('st-watch').textContent=watchC;
+  document.getElementById('st-star').textContent=starC;
+  const logs=d.log||[];
+  document.getElementById('admin-act').innerHTML=logs.length===0?`<div class="empty-state">활동 내역이 없습니다</div>`:
+    logs.slice(0,15).map(a=>`<div class="act-row"><span class="act-time">${a.t}</span><span class="act-msg">${a.m}</span></div>`).join('');
+  document.getElementById('admin-ch').innerHTML=CHAPTERS.map(ch=>{
+    const w=uids.filter(u=>users[u].w?.[ch.id]).length;
+    const q=uids.filter(u=>users[u].qd?.[ch.id]).length;
+    const pct=uids.length?Math.round((q/uids.length)*100):0;
+    return`<div class="ch-bar"><div class="ch-bar-top"><span class="ch-bar-name">${ch.id} ${ch.name}</span><span class="ch-bar-pct">${pct}%</span></div>
+      <div style="font-size:11px;color:var(--gray);margin-bottom:6px">영상 ${w}명 · 퀴즈완료 ${q}명</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div></div>`;
+  }).join('');
+  const tbody=document.getElementById('admin-users');
+  if(!uids.length){tbody.innerHTML='<div class="empty-state">등록된 학습자가 없습니다</div>';return}
+  const rows=uids.map(uid=>{
+    const u=users[uid];let ts=0,tm=0;
+    CHAPTERS.forEach(ch=>{const sc=u.qs?.[ch.id];if(sc!==undefined){ts+=sc;tm+=ch.qIdx.length}});
+    const pct=tm?Math.round((ts/tm)*100):null;
+    return{name:u.name||uid,line:u.line||'—',shift:u.shift||'—',score:tm?`${ts}/${tm}`:null,pct};
+  }).sort((a,b)=>(b.pct||0)-(a.pct||0));
+  tbody.innerHTML=rows.map(r=>{
+    let badge,cls;
+    if(r.pct===null){badge='미응시';cls='none'}
+    else if(r.pct>=90){badge=`★ ${r.score}`;cls='star'}
+    else if(r.pct>=80){badge=r.score;cls='pass'}
+    else{badge=r.score;cls='fail'}
+    return`<div class="u-row"><span style="font-weight:600">${r.name}</span><span style="color:var(--gray);font-size:11px">${r.line}</span><span style="color:var(--gray)">${r.shift}</span><span><span class="sbadge ${cls}">${badge}</span></span></div>`;
+  }).join('');
+}
+function switchTab(t){
+  document.querySelectorAll('.atab').forEach((el,i)=>{el.classList.toggle('active',['overview','chapters','users'][i]===t)});
+  document.querySelectorAll('.tab-panel').forEach(p=>{p.classList.toggle('active',p.id===`tab-${t}`)});
+}
+</script>
+</body>
+</html>
+<!-- ══ 캡처 방지 CSS + JS ══ -->
+<style>
+  /* iOS/Android 공통: 선택 및 드래그 방지 */
+  body {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+  }
+  /* 입력 필드는 선택 허용 */
+  input, select, textarea {
+    -webkit-user-select: text !important;
+    user-select: text !important;
+  }
+</style>
+<script>
+// ── 캡처/스크린샷 방지 ──────────────────────────────
+(function(){
+
+  // 1. 우클릭 방지 (데스크탑 & 안드로이드 크롬)
+  document.addEventListener('contextmenu', e => e.preventDefault());
+
+  // 2. 키보드 캡처 단축키 방지 (PrintScreen, Ctrl+P, Ctrl+S 등)
+  document.addEventListener('keydown', function(e){
+    const blocked = (
+      e.key === 'PrintScreen' ||
+      (e.ctrlKey && ['p','s','u','a'].includes(e.key.toLowerCase())) ||
+      (e.metaKey && ['p','s'].includes(e.key.toLowerCase())) // Mac
+    );
+    if(blocked){ e.preventDefault(); e.stopPropagation(); }
+  });
+
+  // 3. iOS Safari: visibilitychange 감지
+  //    홈 버튼 두 번 누르거나 앱 스위처 진입 시 화면 블러 처리
+  const overlay = document.createElement('div');
+  overlay.id = 'capture-shield';
+  overlay.style.cssText = [
+    'position:fixed','inset:0','z-index:999999',
+    'background:#1A2B4A',
+    'display:none','align-items:center','justify-content:center',
+    'flex-direction:column','gap:16px','color:#fff',
+    'font-family:sans-serif','font-size:16px','font-weight:700',
+    'text-align:center','padding:40px'
+  ].join(';');
+  overlay.innerHTML = '<div style="font-size:48px">🔒</div><div>화면 캡처가 제한되어 있습니다</div><div style="font-size:12px;opacity:.6;margin-top:4px">Screenshot is restricted</div>';
+  document.body.appendChild(overlay);
+
+  function showShield(){ overlay.style.display='flex'; }
+  function hideShield(){ overlay.style.display='none'; }
+
+  // 4. Page Visibility API — 앱 스위처 진입 시 블러
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden) showShield();
+    else hideShield();
+  });
+
+  // 5. iOS blur 이벤트 (홈 버튼, 전화 수신 등)
+  window.addEventListener('blur', showShield);
+  window.addEventListener('focus', hideShield);
+
+  // 6. Android: DevTools 감지 (크기 차이 이용)
+  let devOpen = false;
+  setInterval(function(){
+    const threshold = 160;
+    const widthDiff  = window.outerWidth  - window.innerWidth;
+    const heightDiff = window.outerHeight - window.innerHeight;
+    const isOpen = widthDiff > threshold || heightDiff > threshold;
+    if(isOpen && !devOpen){ devOpen=true; showShield(); }
+    else if(!isOpen && devOpen){ devOpen=false; hideShield(); }
+  }, 1000);
+
+  // 7. 터치 이벤트 장기 누르기 방지 (이미지 저장 팝업 등)
+  document.addEventListener('touchstart', function(e){
+    if(e.target.tagName === 'IMG') e.preventDefault();
+  }, {passive:false});
+
+})();
+</script>
