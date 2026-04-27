@@ -588,6 +588,28 @@ const CHAPTERS=[
    points:[{l:"WHY",v:"공정 변동·결함·스크랩·재작업 감소"},{l:"WHO",v:"GAP/Group Leader 또는 라인 기술자"},{l:"WHEN",v:"Stop at defect, 편차 임계치 도달 시"},{l:"결과",v:"표준 준수→해결 / 미준수→Kata QRCI"}],
    req:["FAST 트리거 규칙이 정의되어 있고 작업자가 인지","FAST 수행 결과가 기록"],
    // videoUrl: 언어별로 다른 URL을 등록 (빈 문자열은 영상 없음)
+   pointsEn:[{l:"WHY",v:"Reduce process variation, defects, scrap & rework"},{l:"WHO",v:"GAP/Group Leader or Line Technician"},{l:"WHEN",v:"Stop at defect, deviation threshold reached"},{l:"Result",v:"Standard OK→Solved / NOK→Start Kata QRCI"}],
+   reqEn:["FAST trigger rules are defined and operators are aware","FAST results are recorded after each execution"],
+   /* MULTILANG_3.01_START */
+   concept_vi:"Khi xảy ra sự cố, hãy kiểm tra trước tiên xem các tiêu chuẩn (WI, thông số, TPM...) có được tuân thủ không. Hầu hết các vấn đề trong quy trình đều xuất phát từ việc không tuân thủ tiêu chuẩn.",
+   points_vi:[{l:"TẠI SAO",v:"Giảm biến động, lỗi, phế phẩm & làm lại"},{l:"AI",v:"GAP/Group Leader hoặc Kỹ thuật viên dây chuyền"},{l:"KHI NÀO",v:"Stop at defect, đạt ngưỡng sai lệch"},{l:"Kết quả",v:"Tuân thủ→Giải quyết / Vi phạm→Kata QRCI"}],
+   req_vi:["Quy tắc kích hoạt FAST được xác định và công nhân nắm rõ","Kết quả thực hiện FAST được ghi lại"],
+   concept_ne:"समस्या उत्पन्न हुँदा सबैभन्दा पहिले मानकहरू (WI, प्यारामिटर, TPM आदि) पालना भएको छ कि छैन भनेर जाँच गर्नुहोस्। अधिकांश प्रक्रिया समस्याहरू मानक उल्लंघनबाट उत्पन्न हुन्छन्।",
+   points_ne:[{l:"किन",v:"प्रक्रिया भिन्नता, दोष, स्क्र्याप र पुनः कार्य घटाउन"},{l:"को",v:"GAP/Group Leader वा लाइन प्राविधिक"},{l:"कहिले",v:"Stop at defect, विचलन सीमा पुगेमा"},{l:"नतिजा",v:"मानक पालना→समाधान / उल्लंघन→Kata QRCI"}],
+   req_ne:["FAST ट्रिगर नियमहरू परिभाषित छन् र श्रमिकहरूलाई थाहा छ","FAST कार्यान्वयनको नतिजा रेकर्ड गरिएको छ"],
+   concept_ru:"При возникновении проблемы сначала проверьте, соблюдаются ли стандарты (рабочие инструкции, параметры, TPM и т.д.). Большинство проблем в процессе возникают из-за отклонений от стандартов.",
+   points_ru:[{l:"ЗАЧЕМ",v:"Снизить вариацию, дефекты, брак и переделки"},{l:"КТО",v:"GAP/Group Leader или линейный технолог"},{l:"КОГДА",v:"Stop at defect, достижение порога отклонения"},{l:"Результат",v:"Стандарт соблюдён→Решено / Нарушен→Kata QRCI"}],
+   req_ru:["Правила запуска FAST определены и известны операторам","Результаты выполнения FAST фиксируются"],
+   concept_uz:"Muammo yuzaga kelganda, avvalo standartlar (ish ko'rsatmalari, parametrlar, TPM va h.k.) bajarilayotganini tekshiring. Ko'pgina jarayon muammolari standartlardan og'ishdan kelib chiqadi.",
+   points_uz:[{l:"NIMA UCHUN",v:"Farqlanish, nuqson, chiqindi va qayta ishlashni kamaytirish"},{l:"KIM",v:"GAP/Group Leader yoki liniya texniki"},{l:"QACHON",v:"Stop at defect, og'ish chegarasiga yetilganda"},{l:"Natija",v:"Standart bajarildi→Hal etildi / Bajarilmadi→Kata QRCI"}],
+   req_uz:["FAST ishga tushirish qoidalari belgilangan va ishchilar biladi","FAST natijalar qayd etilgan"],
+   concept_si:"ගැටලුවක් ඇති වූ විට, පළමුව ප්‍රමිතීන් (WI, පරාමිතීන්, TPM ආදිය) අනුගමනය කරන්නේ දැයි පරීක්ෂා කරන්න. බොහෝ ක්‍රියාවලි ගැටලු ප්‍රමිතී උල්ලංඝනයෙන් ඇති වේ.",
+   points_si:[{l:"ඇයි",v:"විචලනය, දෝෂ, අපද්‍රව්‍ය සහ නැවත කිරීම අඩු කිරීමට"},{l:"කවුද",v:"GAP/Group Leader හෝ රේඛා තාක්ෂණවේදී"},{l:"කවදාද",v:"Stop at defect, අපගමන සීමාවට ළඟා වූ විට"},{l:"ප්‍රතිඵලය",v:"ප්‍රමිතිය OK→විසඳුම / NOK→Kata QRCI"}],
+   req_si:["FAST ක්‍රියාකාරී නීති අර්ථ දක්වා ඇති අතර කම්කරුවන් දනිති","FAST ක්‍රියාත්මක කිරීමේ ප්‍රතිඵල වාර්තා කෙරේ"],
+   concept_tr:"Bir sorun oluştuğunda, öncelikle standartların (İş Talimatı, parametreler, TPM vb.) uygulanıp uygulanmadığını kontrol edin. Süreçteki sorunların büyük çoğunluğu standart ihlallerinden kaynaklanır.",
+   points_tr:[{l:"NEDEN",v:"Proses varyasyonu, hata, hurda ve yeniden işlemeyi azalt"},{l:"KİM",v:"GAP/Grup Lideri veya Hat Teknisyeni"},{l:"NE ZAMAN",v:"Stop at defect, sapma eşiğine ulaşıldığında"},{l:"Sonuç",v:"Standart OK→Çözüldü / NOK→Kata QRCI başlat"}],
+   req_tr:["FAST tetikleme kuralları tanımlanmış ve operatörler bilgili","FAST uygulama sonuçları kayıt altına alınmış"],
+   /* MULTILANG_3.01_END */
    videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
    qIdx:[0,1,2]},
   {id:"3.02",name:"Poka Yoke",nameKo:"포카요케 (실수 방지)",color:"#00A854",
@@ -595,6 +617,28 @@ const CHAPTERS=[
    conceptEn:"Since people make mistakes, Poka Yoke (error-proofing devices) automatically ensure conformity of key product characteristics.",
    points:[{l:"WHY",v:"결함 생성 방지 및 불량품 다음 공정 차단"},{l:"WHO",v:"자격을 갖춘 작업자"},{l:"WHEN",v:"교대 시작, 모델 변경 후, 고장 후"},{l:"고장 시",v:"반응 규칙→Backup Mode 없으면 생산 정지"}],
    req:["자격자가 지침에 따라 Poka Yoke 검증 수행","Padlock으로 상태 가시적 표시","Red/Green Rabbit 교정·전용 구역 보관"],
+   pointsEn:[{l:"WHY",v:"Prevent defect creation & stop NOK parts reaching next process"},{l:"WHO",v:"Qualified operator"},{l:"WHEN",v:"Shift start, after changeover, after breakdown"},{l:"Breakdown",v:"Apply reaction rules → No Backup Mode = STOP production"}],
+   reqEn:["Qualified operator verifies Poka Yoke per work instruction","Status visibly displayed with Padlock","Red/Green Rabbit calibrated & stored in dedicated area"],
+   /* MULTILANG_3.02_START */
+   concept_vi:"Vì con người dễ mắc lỗi, Poka Yoke (thiết bị chống lỗi) tự động đảm bảo sự phù hợp của các đặc tính sản phẩm quan trọng. Được định nghĩa trong FMEA và Control Plan.",
+   points_vi:[{l:"TẠI SAO",v:"Ngăn tạo ra lỗi & chặn chi tiết NOK sang công đoạn tiếp theo"},{l:"AI",v:"Công nhân có chứng chỉ"},{l:"KHI NÀO",v:"Bắt đầu ca, sau khi chuyển đổi, sau sự cố"},{l:"Khi hỏng",v:"Áp dụng quy tắc phản ứng → Không có Backup Mode = DỪNG"}],
+   req_vi:["Công nhân đủ tiêu chuẩn xác minh Poka Yoke theo WI","Trạng thái hiển thị rõ ràng bằng Padlock","Red/Green Rabbit được hiệu chuẩn & bảo quản đúng nơi"],
+   concept_ne:"मानिसहरू गल्ती गर्छन् भनेर, Poka Yoke (गल्ती रोक्ने उपकरण) ले मुख्य उत्पाद विशेषताहरूको अनुपालन स्वचालित रूपमा सुनिश्चित गर्छ। FMEA र Control Plan मा परिभाषित गरिएको।",
+   points_ne:[{l:"किन",v:"दोष सिर्जना रोक्न र NOK भागहरू अर्को प्रक्रियामा जान नदिन"},{l:"को",v:"योग्य श्रमिक"},{l:"कहिले",v:"सिफ्ट सुरु, चेन्जओभर पछि, खराबी पछि"},{l:"खराब भएमा",v:"प्रतिक्रिया नियम लागू → Backup Mode छैन = उत्पादन बन्द"}],
+   req_ne:["योग्य श्रमिकले WI अनुसार Poka Yoke प्रमाणित गर्छ","Padlock मार्फत अवस्था दृश्यात्मक रूपमा देखाइन्छ","Red/Green Rabbit क्यालिब्रेट गरिएको र निर्धारित ठाउँमा राखिएको"],
+   concept_ru:"Поскольку люди совершают ошибки, Poka Yoke (устройства защиты от ошибок) автоматически обеспечивают соответствие ключевых характеристик продукта. Определяется в FMEA и Control Plan.",
+   points_ru:[{l:"ЗАЧЕМ",v:"Предотвратить создание дефектов и передачу NOK деталей"},{l:"КТО",v:"Квалифицированный оператор"},{l:"КОГДА",v:"Начало смены, после переналадки, после поломки"},{l:"При поломке",v:"Применить правила реагирования → Нет Backup Mode = СТОП"}],
+   req_ru:["Квалифицированный оператор проверяет Poka Yoke по рабочей инструкции","Статус отображается визуально с помощью Padlock","Red/Green Rabbit откалиброван и хранится в отведённом месте"],
+   concept_uz:"Odamlar xato qiladi, shuning uchun Poka Yoke (xatolardan himoya qurilmalari) asosiy mahsulot xususiyatlarining muvofiqligini avtomatik ravishda ta'minlaydi. FMEA va Control Plan da belgilangan.",
+   points_uz:[{l:"NIMA UCHUN",v:"Nuqson yaratishni oldini olish va NOK qismlarni keyingi jarayonga o'tkazmaslik"},{l:"KIM",v:"Malakali ishchi"},{l:"QACHON",v:"Smena boshida, almashtirishdan keyin, nosozlikdan keyin"},{l:"Nosozlik",v:"Reaktsiya qoidalarini qo'llash → Backup Mode yo'q = TO'XTATISH"}],
+   req_uz:["Malakali ishchi WI bo'yicha Poka Yoke ni tekshiradi","Padlock yordamida holat ko'rinib tuради","Red/Green Rabbit kalibrlovchi va belgilangan joyda saqlanadi"],
+   concept_si:"මිනිසුන් වැරදි කරන නිසා, Poka Yoke (දෝෂ-ආරක්ෂණ උපාංග) ප්‍රධාන නිෂ්පාදන ලක්ෂණවල අනුකූලතාව ස්වයංක්‍රීයව සහතික කරයි. FMEA සහ Control Plan හි නිර්වචනය කෙරේ.",
+   points_si:[{l:"ඇයි",v:"දෝෂ නිර්මාණය වළක්වා NOK කොටස් ඊළඟ ක්‍රියාවලියට නොයාමට"},{l:"කවුද",v:"සුදුසුකම් ලත් ක්‍රියාකරු"},{l:"කවදාද",v:"වැඩ මුර ආරම්භය, මාරු කිරීමෙන් පසු, බිඳවැටීමෙන් පසු"},{l:"බිඳවැටීම",v:"ප්‍රතික්‍රියා නීති යෙදෙ → Backup Mode නැත = නිෂ්පාදනය නතර"}],
+   req_si:["සුදුසු ක්‍රියාකරු WI අනුව Poka Yoke සත්‍යාපනය කරයි","Padlock මගින් තත්ත්වය දෘශ්‍යමාන වේ","Red/Green Rabbit සංශෝධනය කර නිසි ස්ථානයේ ගබඩා"],
+   concept_tr:"İnsanlar hata yaptığından, Poka Yoke (hata önleme cihazları) kritik ürün özelliklerinin uygunluğunu otomatik olarak sağlar. FMEA ve Kontrol Planı'nda tanımlanır.",
+   points_tr:[{l:"NEDEN",v:"Hata oluşumunu önle & NOK parçaların bir sonraki prosese geçmesini engelle"},{l:"KİM",v:"Nitelikli operatör"},{l:"NE ZAMAN",v:"Vardiya başlangıcı, değişim sonrası, arıza sonrası"},{l:"Arızada",v:"Tepki kurallarını uygula → Backup Mode yoksa = ÜRETİMİ DURDUR"}],
+   req_tr:["Nitelikli operatör İş Talimatına göre Poka Yoke doğrular","Durum Padlock ile görsel olarak gösterilir","Red/Green Rabbit kalibre edilmiş & ayrılmış alanda saklanır"],
+   /* MULTILANG_3.02_END */
    videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
    qIdx:[3,4,5]},
   {id:"3.03",name:"OK First Part",nameKo:"OK 초품 확인",color:"#D97706",
@@ -602,6 +646,28 @@ const CHAPTERS=[
    conceptEn:"Since all processes have variation, regularly verify that safe conditions exist for producing good parts before each shift starts.",
    points:[{l:"WHY",v:"안전한 조건에서 양품 생산 준비 확인"},{l:"WHO",v:"자격자 수행 / GAP Leader or Supervisor 검증"},{l:"WHEN",v:"교대 시작, 모델 변경 후, 고장/정지 후"},{l:"필수 항목",v:"HSE 안전 · Polyvalence · 5S"}],
    req:["자격자가 체크시트에 OK/NOK 명확히 기록","4 Eyes Principle 준수","결과가 라인에서 가시적으로 표시"],
+   pointsEn:[{l:"WHY",v:"Verify safe conditions to produce good parts"},{l:"WHO",v:"Qualified person performs / GAP Leader or Supervisor verifies"},{l:"WHEN",v:"Shift start, after changeover, after breakdown/standstill"},{l:"Mandatory",v:"HSE Safety · Polyvalence · 5S"}],
+   reqEn:["Qualified person records OK/NOK clearly on checklist","4 Eyes Principle applied (performer ≠ final approver)","Status visibly displayed on the line"],
+   /* MULTILANG_3.03_START */
+   concept_vi:"Vì mọi quy trình sản xuất đều có biến động, cần kiểm tra định kỳ xem điều kiện có an toàn để sản xuất chi tiết tốt không trước khi bắt đầu ca.",
+   points_vi:[{l:"TẠI SAO",v:"Xác minh điều kiện an toàn để sản xuất chi tiết tốt"},{l:"AI",v:"Người có chứng chỉ thực hiện / GAP Leader hoặc Supervisor xác nhận"},{l:"KHI NÀO",v:"Bắt đầu ca, sau chuyển đổi, sau sự cố/dừng máy"},{l:"Bắt buộc",v:"An toàn HSE · Polyvalence · 5S"}],
+   req_vi:["Người có chứng chỉ ghi rõ OK/NOK trên checklist","4 Eyes Principle được áp dụng","Kết quả hiển thị rõ ràng trên dây chuyền"],
+   concept_ne:"सबै उत्पादन प्रक्रियामा भिन्नता हुन्छ, त्यसैले प्रत्येक सिफ्ट सुरु हुनु अघि राम्रो भागहरू उत्पादन गर्न सुरक्षित अवस्था छ कि छैन भनेर नियमित जाँच गर्नुपर्छ।",
+   points_ne:[{l:"किन",v:"सुरक्षित अवस्थामा राम्रो भाग उत्पादन तयारी प्रमाणित गर्न"},{l:"को",v:"योग्य व्यक्तिले गर्छ / GAP Leader वा Supervisor ले प्रमाणित गर्छ"},{l:"कहिले",v:"सिफ्ट सुरु, चेन्जओभर पछि, खराबी/बन्द पछि"},{l:"अनिवार्य",v:"HSE सुरक्षा · Polyvalence · 5S"}],
+   req_ne:["योग्य व्यक्तिले चेकलिस्टमा OK/NOK स्पष्ट रूपमा रेकर्ड गर्छ","4 Eyes Principle पालना गरिन्छ","नतिजा लाइनमा दृश्यात्मक रूपमा देखाइन्छ"],
+   concept_ru:"Поскольку все производственные процессы имеют вариацию, необходимо регулярно проверять наличие безопасных условий для производства качественных деталей перед началом каждой смены.",
+   points_ru:[{l:"ЗАЧЕМ",v:"Подтвердить готовность к производству качественных деталей"},{l:"КТО",v:"Квалифицированный сотрудник / GAP Leader или Supervisor проверяет"},{l:"КОГДА",v:"Начало смены, после переналадки, после поломки/остановки"},{l:"Обязательно",v:"Безопасность HSE · Поливалентность · 5S"}],
+   req_ru:["Квалифицированный сотрудник чётко записывает OK/NOK в чек-листе","Соблюдается принцип 4 Eyes","Результат визуально отображается на линии"],
+   concept_uz:"Barcha ishlab chiqarish jarayonlarida farqlanish mavjud, shuning uchun har bir smenadan oldin sifatli qismlar ishlab chiqarish uchun xavfsiz sharoit mavjudligini muntazam tekshirish kerak.",
+   points_uz:[{l:"NIMA UCHUN",v:"Sifatli qismlar ishlab chiqarishga tayyorlikni tasdiqlash"},{l:"KIM",v:"Malakali xodim bajaradi / GAP Leader yoki Supervisor tekshiradi"},{l:"QACHON",v:"Smena boshi, almashtirishdan keyin, nosozlik/to'xtatishdan keyin"},{l:"Majburiy",v:"HSE xavfsizligi · Polyvalence · 5S"}],
+   req_uz:["Malakali xodim nazorat ro'yxatiga OK/NOK ni aniq yozadi","4 Eyes Principle qo'llaniladi","Natija liniyada ko'rinib turadi"],
+   concept_si:"සියලු නිෂ්පාදන ක්‍රියාවලීන්හි විචලනය ඇති නිසා, සෑම වැඩ මුරයකට පෙර හොඳ කොටස් නිෂ්පාදනය සඳහා ආරක්ෂිත තත්ත්ව ඇතිදැයි නිතිපතා තහවුරු කළ යුතුය.",
+   points_si:[{l:"ඇයි",v:"හොඳ කොටස් නිෂ්පාදනය සඳහා ආරක්ෂිත කොන්දේසි සහතික කිරීමට"},{l:"කවුද",v:"සුදුසු පුද්ගලයා ක්‍රියාත්මක කරයි / GAP Leader හෝ Supervisor සත්‍යාපනය"},{l:"කවදාද",v:"වැඩ මුර ආරම්භය, මාරු කිරීමෙන් පසු, බිඳවැටීමෙන් පසු"},{l:"අත්‍යවශ්‍ය",v:"HSE ආරක්ෂාව · Polyvalence · 5S"}],
+   req_si:["සුදුසු පුද්ගලයා පිරික්සුම් ලැයිස්තුවේ OK/NOK පැහැදිලිව සටහන් කරයි","4 Eyes Principle යෙදේ","ප්‍රතිඵලය රේඛාවේ දෘශ්‍යමාන වේ"],
+   concept_tr:"Tüm üretim süreçlerinde varyasyon olduğundan, her vardiya başlangıcında iyi parça üretmek için güvenli koşulların mevcut olup olmadığını düzenli olarak doğrulamak gerekir.",
+   points_tr:[{l:"NEDEN",v:"İyi parça üretmek için güvenli koşulları doğrula"},{l:"KİM",v:"Nitelikli kişi uygular / GAP Lideri veya Süpervizör doğrular"},{l:"NE ZAMAN",v:"Vardiya başlangıcı, değişim sonrası, arıza/duruş sonrası"},{l:"Zorunlu",v:"HSE Güvenlik · Çok Yetkinlik · 5S"}],
+   req_tr:["Nitelikli kişi kontrol listesinde OK/NOK'u açıkça kaydeder","4 Göz Prensibi uygulanır","Sonuç hatta görsel olarak gösterilir"],
+   /* MULTILANG_3.03_END */
    videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
    qIdx:[6,7]},
   {id:"3.04",name:"Check-Do-Check",nameKo:"확인-실행-확인",color:"#E53E3E",
@@ -609,6 +675,28 @@ const CHAPTERS=[
    conceptEn:"Operators act as inspectors: do not accept, create, or pass on defects.",
    points:[{l:"Check(앞)",v:"이전 공정 부품 확인 — 결함 수용 금지"},{l:"Do",v:"작업 지침에 따라 정확히 작업 수행"},{l:"Check(뒤)",v:"작업 후 확인 — 결함 전달 금지"},{l:"결함 발견",v:"식별→기록→Bin 분리→반응 규칙"}],
    req:["작업 지침에 검사 항목·합격 기준 기술","작업자가 반응 규칙 숙지","결함 발견 시 결함명과 함께 즉시 기록"],
+   pointsEn:[{l:"Check (Before)",v:"Do not accept defects from previous process"},{l:"Do",v:"Perform work exactly per work instruction"},{l:"Check (After)",v:"Do not pass defects to next process"},{l:"Defect Found",v:"Identify → Record → Bin separation → Reaction rules"}],
+   reqEn:["Work instruction describes inspection items & acceptance criteria","Operator knows reaction rules","Defects recorded immediately with defect name/code"],
+   /* MULTILANG_3.04_START */
+   concept_vi:"Công nhân đóng vai trò người kiểm tra: không nhận lỗi, không tạo ra lỗi, không chuyển lỗi sang công đoạn tiếp theo.",
+   points_vi:[{l:"Kiểm tra (Trước)",v:"Không chấp nhận lỗi từ công đoạn trước"},{l:"Thực hiện",v:"Thực hiện công việc đúng theo WI"},{l:"Kiểm tra (Sau)",v:"Không chuyển lỗi sang công đoạn tiếp theo"},{l:"Phát hiện lỗi",v:"Nhận dạng→Ghi chép→Phân loại Bin→Quy tắc phản ứng"}],
+   req_vi:["WI mô tả mục kiểm tra & tiêu chí chấp nhận","Công nhân biết quy tắc phản ứng","Lỗi được ghi ngay lập tức kèm tên/mã lỗi"],
+   concept_ne:"श्रमिकहरू निरीक्षकको भूमिका निभाउँछन्: दोष स्वीकार नगर्ने, दोष सिर्जना नगर्ने, दोष पठाउने नगर्ने।",
+   points_ne:[{l:"जाँच (अघि)",v:"अघिल्लो प्रक्रियाबाट दोष स्वीकार नगर्ने"},{l:"काम",v:"WI अनुसार ठीकसँग काम गर्ने"},{l:"जाँच (पछि)",v:"अर्को प्रक्रियामा दोष नपठाउने"},{l:"दोष फेला",v:"पहिचान→रेकर्ड→Bin छुट्याउने→प्रतिक्रिया नियम"}],
+   req_ne:["WI मा निरीक्षण वस्तु र स्वीकृति मापदण्ड वर्णन गरिएको","श्रमिकलाई प्रतिक्रिया नियमहरू थाहा छ","दोष तुरुन्त दोष नाम/कोडसहित रेकर्ड गरिन्छ"],
+   concept_ru:"Операторы выполняют роль инспекторов: не принимать дефекты, не создавать дефекты, не передавать дефекты на следующую операцию.",
+   points_ru:[{l:"Контроль (До)",v:"Не принимать дефекты от предыдущего процесса"},{l:"Выполнение",v:"Выполнять работу строго по рабочей инструкции"},{l:"Контроль (После)",v:"Не передавать дефекты на следующий процесс"},{l:"Обнаружен дефект",v:"Идентификация→Запись→Разделение Bin→Правила реагирования"}],
+   req_ru:["В рабочей инструкции описаны пункты контроля и критерии приёмки","Оператор знает правила реагирования","Дефекты немедленно фиксируются с кодом/наименованием"],
+   concept_uz:"Ishchilar nazoratchi rolini bajaradi: nuqsonlarni qabul qilmaslik, nuqson yaratmaslik, nuqsonlarni keyingi jarayonga o'tkazmaslik.",
+   points_uz:[{l:"Tekshirish (Oldin)",v:"Oldingi jarayondan nuqsonlarni qabul qilmaslik"},{l:"Bajarish",v:"Ishni WI bo'yicha to'g'ri bajarish"},{l:"Tekshirish (Keyin)",v:"Nuqsonlarni keyingi jarayonga o'tkazmaslik"},{l:"Nuqson topilsa",v:"Aniqlash→Yozish→Bin ajratish→Reaktsiya qoidalari"}],
+   req_uz:["WI da tekshirish elementlari va qabul qilish mezonlari yozilgan","Ishchi reaktsiya qoidalarini biladi","Nuqsonlar darhol nom/kod bilan qayd etiladi"],
+   concept_si:"ක්‍රියාකරුවන් පරීක්ෂකයින්ගේ භූමිකාව ඉටු කරයි: දෝෂ නොපිළිගන්නවා, දෝෂ නොනිර්මාණය කරනවා, දෝෂ ඊළඟ ක්‍රියාවලියට නොදෙනවා.",
+   points_si:[{l:"පරීක්ෂාව (පෙර)",v:"පෙර ක්‍රියාවලියෙන් දෝෂ නොපිළිගන්නවා"},{l:"කිරීම",v:"WI අනුව නිවැරදිව වැඩ කිරීම"},{l:"පරීක්ෂාව (පසු)",v:"ඊළඟ ක්‍රියාවලියට දෝෂ නොදෙනවා"},{l:"දෝෂය සොයා",v:"හඳුනාගැනීම→සටහන්→Bin වෙන්කිරීම→ප්‍රතික්‍රියා නීති"}],
+   req_si:["WI හි පරීක්ෂණ අයිතම සහ පිළිගැනීමේ නිර්ණායක විස්තර කෙරේ","ක්‍රියාකරු ප්‍රතික්‍රියා නීති දනී","දෝෂ වහාම නාමය/කේතය සමඟ වාර්තා කෙරේ"],
+   concept_tr:"Operatörler denetçi rolü üstlenir: hata kabul etme, hata oluşturma, hatayı bir sonraki prosese geçirme.",
+   points_tr:[{l:"Kontrol (Önce)",v:"Önceki prosesten hata kabul etme"},{l:"Uygulama",v:"İşi İş Talimatına göre tam olarak yap"},{l:"Kontrol (Sonra)",v:"Hatayı sonraki prosese geçirme"},{l:"Hata bulundu",v:"Tanımla→Kaydet→Bin ayır→Tepki kurallarını uygula"}],
+   req_tr:["İş Talimatı kontrol maddelerini ve kabul kriterlerini tanımlar","Operatör tepki kurallarını bilir","Hatalar hata adı/kodu ile anında kaydedilir"],
+   /* MULTILANG_3.04_END */
    videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
    qIdx:[8,9,10]},
   {id:"3.05",name:"Final Inspection",nameKo:"최종 검사",color:"#805AD5",
@@ -616,6 +704,28 @@ const CHAPTERS=[
    conceptEn:"The last manual/visual inspection before products reach the customer. TQW is a temporary additional inspection — a removal plan is mandatory.",
    points:[{l:"WHO",v:"Gauge R&R 통과 + Polyvalence Level U"},{l:"항목 수",v:"최대 15개 권장, Takt Time 초과 금지"},{l:"TQW",v:"임시 조치 — 1년 이상 유지 불가"},{l:"결함 발견",v:"생산 공정에 즉시 피드백"}],
    req:["검사 항목 ≤ 15개","검사 사이클 타임 < 라인 목표","TQW 제거를 위한 Action Plan 존재"],
+   pointsEn:[{l:"WHO",v:"Gauge R&R passed + Polyvalence Level U"},{l:"Items",v:"Max 15 items recommended, must not exceed Takt Time"},{l:"TQW",v:"Temporary measure — cannot be maintained over 1 year"},{l:"Defect Found",v:"Immediate feedback to production process"}],
+   reqEn:["Inspection items ≤ 15","Inspection cycle time < line target cycle time","Action plan exists to remove TQW"],
+   /* MULTILANG_3.05_START */
+   concept_vi:"Kiểm tra thủ công/trực quan cuối cùng trước khi sản phẩm đến tay khách hàng. TQW là kiểm tra tạm thời bổ sung và bắt buộc phải có kế hoạch loại bỏ.",
+   points_vi:[{l:"AI",v:"Đã qua Gauge R&R + Polyvalence Level U"},{l:"Số mục",v:"Tối đa 15 mục, không vượt Takt Time"},{l:"TQW",v:"Biện pháp tạm thời — không duy trì quá 1 năm"},{l:"Phát hiện lỗi",v:"Phản hồi ngay cho quá trình sản xuất"}],
+   req_vi:["Số mục kiểm tra ≤ 15","Thời gian chu kỳ kiểm tra < mục tiêu dây chuyền","Có kế hoạch loại bỏ TQW"],
+   concept_ne:"ग्राहकसम्म उत्पाद पुग्नु अघि गरिने अन्तिम हस्तचालित/दृश्य निरीक्षण। TQW अस्थायी थप निरीक्षण हो र हटाउने योजना अनिवार्य छ।",
+   points_ne:[{l:"को",v:"Gauge R&R पास + Polyvalence Level U"},{l:"वस्तुहरू",v:"अधिकतम १५ वस्तु, Takt Time नाघ्नु हुँदैन"},{l:"TQW",v:"अस्थायी उपाय — १ वर्षभन्दा बढी राख्न नहुने"},{l:"दोष फेला",v:"उत्पादन प्रक्रियामा तुरुन्त प्रतिक्रिया"}],
+   req_ne:["निरीक्षण वस्तुहरू ≤ १५","निरीक्षण साइकल समय < लाइन लक्ष्य","TQW हटाउने Action Plan छ"],
+   concept_ru:"Финальный ручной/визуальный контроль перед поступлением продукта к заказчику. TQW — временный дополнительный контроль, для которого обязателен план по ликвидации.",
+   points_ru:[{l:"КТО",v:"Прошедший Gauge R&R + Polyvalence Level U"},{l:"Кол-во пунктов",v:"Макс. 15 пунктов, не превышать Takt Time"},{l:"TQW",v:"Временная мера — нельзя сохранять более 1 года"},{l:"Обнаружен дефект",v:"Немедленная обратная связь в производственный процесс"}],
+   req_ru:["Количество пунктов контроля ≤ 15","Время цикла контроля < целевого времени линии","Существует план ликвидации TQW"],
+   concept_uz:"Mahsulot mijozga yetib bormasdan oldin amalga oshiriladigan so'nggi qo'lda/vizual tekshiruv. TQW vaqtinchalik qo'shimcha tekshiruv bo'lib, uni olib tashlash rejasi majburiy.",
+   points_uz:[{l:"KIM",v:"Gauge R&R o'tgan + Polyvalence Level U"},{l:"Elementlar",v:"Maks 15 element, Takt Time dan oshmasin"},{l:"TQW",v:"Vaqtinchalik chora — 1 yildan ortiq ushlab bo'lmaydi"},{l:"Nuqson topilsa",v:"Ishlab chiqarish jarayoniga darhol qayta aloqa"}],
+   req_uz:["Tekshiruv elementlari ≤ 15","Tekshiruv tsikl vaqti < liniya maqsadidan kam","TQW ni olib tashlash Action Plan mavjud"],
+   concept_si:"නිෂ්පාදිතය පාරිභෝගිකයාට ළඟා වීමට පෙර සිදු කරන අවසාන අතින්/දෘශ්‍ය පරීක්ෂාව. TQW යනු තාවකාලික අතිරේක පරීක්ෂාවක් වන අතර ඉවත් කිරීමේ සැලැස්ම අත්‍යවශ්‍ය.",
+   points_si:[{l:"කවුද",v:"Gauge R&R සමත් + Polyvalence Level U"},{l:"අයිතම",v:"උපරිම 15 අයිතම, Takt Time නොඉක්මවිය යුතුය"},{l:"TQW",v:"තාවකාලික පියවරක් — 1 වසරකට වඩා නොතබිය හැකි"},{l:"දෝෂය සොයා",v:"නිෂ්පාදන ක්‍රියාවලියට වහාම ප්‍රතිපෝෂණය"}],
+   req_si:["පරීක්ෂණ අයිතම ≤ 15","පරීක්ෂණ චක්‍ර කාලය < රේඛා ඉලක්ක කාලය","TQW ඉවත් කිරීමේ Action Plan පවතී"],
+   concept_tr:"Ürün müşteriye ulaşmadan önce yapılan son manuel/görsel kontrol. TQW geçici ek bir kontroldür ve kaldırma planı zorunludur.",
+   points_tr:[{l:"KİM",v:"Gauge R&R geçmiş + Polyvalence Seviye U"},{l:"Madde Sayısı",v:"Maks. 15 madde, Takt Time aşılmamalı"},{l:"TQW",v:"Geçici önlem — 1 yıldan fazla sürdürülemez"},{l:"Hata bulundu",v:"Üretim prosesine anında geri bildirim"}],
+   req_tr:["Kontrol maddeleri ≤ 15","Kontrol çevrim süresi < hat hedef süresi","TQW kaldırma Eylem Planı mevcut"],
+   /* MULTILANG_3.05_END */
    videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
    qIdx:[11,12]},
   {id:"3.06",name:"Non-Conformance",nameKo:"부적합품 관리",color:"#2B6CB0",
@@ -623,6 +733,28 @@ const CHAPTERS=[
    conceptEn:"Ensure non-conforming or suspect parts are properly managed so only good parts reach the next process and the customer.",
    points:[{l:"Yellow Label",v:"재작업 가능 NOK → Yellow Bin"},{l:"Red Label",v:"재작업 불가 NOK → Red Bin → 스크랩"},{l:"등록",v:"스크랩은 다음 교대 전까지 ERP 등록"},{l:"격리 구역",v:"책임자 정의, 잠금 관리"}],
    req:["작업자가 부적합품 처리 방법 설명 가능","스크랩이 결함명과 함께 ERP에 등록","격리 구역 관리 (식별·잠금·입출고 기록)"],
+   pointsEn:[{l:"Yellow Label",v:"Reworkable NOK → Yellow Bin"},{l:"Red Label",v:"Non-reworkable NOK → Red Bin → Scrap"},{l:"Registration",v:"Scrap registered in ERP before next shift starts"},{l:"Quarantine",v:"Responsible person defined, area locked & controlled"}],
+   reqEn:["Operator can explain how to handle non-conforming parts","Scrap registered in ERP with defect name/code","Quarantine area managed (identified, locked, in/out recorded)"],
+   /* MULTILANG_3.06_START */
+   concept_vi:"Đảm bảo các chi tiết không phù hợp hoặc nghi ngờ được quản lý đúng cách trong nhà máy, chỉ chi tiết tốt mới đến công đoạn tiếp theo và khách hàng.",
+   points_vi:[{l:"Nhãn vàng",v:"NOK có thể sửa → Yellow Bin"},{l:"Nhãn đỏ",v:"NOK không thể sửa → Red Bin → Phế phẩm"},{l:"Đăng ký",v:"Phế phẩm đăng ký ERP trước ca tiếp theo"},{l:"Cách ly",v:"Người chịu trách nhiệm xác định, khóa & kiểm soát"}],
+   req_vi:["Công nhân giải thích được cách xử lý chi tiết không phù hợp","Phế phẩm đăng ký ERP kèm tên/mã lỗi","Khu cách ly được quản lý (nhận dạng, khóa, ghi nhập xuất)"],
+   concept_ne:"कारखानाभित्र अनुपयुक्त वा संदिग्ध भागहरू सही तरिकाले व्यवस्थापन गरिन्छ भनेर सुनिश्चित गर्दछ, राम्रा भागहरू मात्र अर्को प्रक्रिया र ग्राहकमा जान्छन्।",
+   points_ne:[{l:"पहेंलो लेबल",v:"पुन: कार्य गर्न सकिने NOK → Yellow Bin"},{l:"रातो लेबल",v:"पुन: कार्य गर्न नसकिने NOK → Red Bin → स्क्र्याप"},{l:"दर्ता",v:"स्क्र्याप अर्को सिफ्ट सुरु हुनु अघि ERP मा दर्ता"},{l:"क्वारेन्टाइन",v:"जिम्मेवार व्यक्ति परिभाषित, ताल्चा लगाएर नियन्त्रण"}],
+   req_ne:["श्रमिकले अनुपयुक्त भाग कसरी सम्हाल्ने भनेर बताउन सक्छ","स्क्र्याप दोष नाम/कोडसहित ERP मा दर्ता","क्वारेन्टाइन क्षेत्र व्यवस्थापन (पहिचान, ताल्चा, प्रवेश-निकास रेकर्ड)"],
+   concept_ru:"Обеспечить правильное управление несоответствующими или подозрительными деталями на заводе, чтобы только качественные детали поступали на следующий процесс и к заказчику.",
+   points_ru:[{l:"Жёлтая этикетка",v:"Ремонтопригодный NOK → Yellow Bin"},{l:"Красная этикетка",v:"Неремонтопригодный NOK → Red Bin → Брак"},{l:"Регистрация",v:"Брак регистрируется в ERP до начала следующей смены"},{l:"Карантин",v:"Ответственный определён, зона заперта и контролируется"}],
+   req_ru:["Оператор может объяснить порядок работы с несоответствующими деталями","Брак регистрируется в ERP с кодом/наименованием дефекта","Карантинная зона управляется (маркировка, замок, журнал входа/выхода)"],
+   concept_uz:"Zavodda nomuvofiq yoki shubhali qismlar to'g'ri boshqarilishini ta'minlash, faqat sifatli qismlar keyingi jarayon va mijozga yetib borishini kafolatlash.",
+   points_uz:[{l:"Sariq yorliq",v:"Qayta ishlanishi mumkin NOK → Yellow Bin"},{l:"Qizil yorliq",v:"Qayta ishlab bo'lmaydigan NOK → Red Bin → Chiqindi"},{l:"Ro'yxatga olish",v:"Chiqindi keyingi smenadan oldin ERP ga kiritiladi"},{l:"Karantin",v:"Mas'ul shaxs belgilangan, zona qulflangan va nazorat ostida"}],
+   req_uz:["Ishchi nomuvofiq qismlarni qanday hal qilishni tushuntira oladi","Chiqindi nuqson nomi/kodi bilan ERP ga kiritiladi","Karantin zonasi boshqariladi (belgi, qulf, kirish-chiqish yozuvi)"],
+   concept_si:"කර්මාන්ත ශාලාව තුළ නොගැලපෙන හෝ සැක සහිත කොටස් නිසිලෙස කළමනාකරණය කරනු ලැබේ, හොඳ කොටස් පමණක් ඊළඟ ක්‍රියාවලියට සහ පාරිභෝගිකයාට ලබා දෙනු ලැබේ.",
+   points_si:[{l:"කහ ලේබලය",v:"නැවත සකස් කළ හැකි NOK → Yellow Bin"},{l:"රතු ලේබලය",v:"නැවත සකස් කළ නොහැකි NOK → Red Bin → ප්‍රතික්ෂේප"},{l:"ලියාපදිංචිය",v:"ප්‍රතික්ෂේප ඊළඟ වැඩ මුරයට පෙර ERP හි ලියාපදිංචිය"},{l:"පාලන ප්‍රදේශය",v:"වගකිව යුත්තා නිර්වචිතයි, අගුළු දමා පාලනය"}],
+   req_si:["ක්‍රියාකරු නොගැලපෙන කොටස් සමඟ කළ යුත්තේ කුමක්ද යැයි පැහැදිලි කළ හැකිය","ප්‍රතික්ෂේප දෝෂ නාමය/කේතය සමඟ ERP හි ලියාපදිංචිය","පාලන ප්‍රදේශය කළමනාකරණය (හඳුනාගැනීම, අගුළ, ඇතුළත්/පිටත් වාර්තාව)"],
+   concept_tr:"Fabrikadaki uygunsuz veya şüpheli parçaların doğru yönetilmesini sağlayarak yalnızca iyi parçaların sonraki prosese ve müşteriye ulaşmasını garanti eder.",
+   points_tr:[{l:"Sarı Etiket",v:"Yeniden işlenebilir NOK → Yellow Bin"},{l:"Kırmızı Etiket",v:"Yeniden işlenemeyen NOK → Red Bin → Hurda"},{l:"Kayıt",v:"Hurda bir sonraki vardiya başlamadan ERP'ye kaydedilir"},{l:"Karantina",v:"Sorumlu kişi tanımlanmış, alan kilitli ve kontrollü"}],
+   req_tr:["Operatör uygunsuz parça işleme yöntemini açıklayabilir","Hurda ERP'ye hata adı/kodu ile kaydedilir","Karantina alanı yönetilir (işaretleme, kilit, giriş/çıkış kaydı)"],
+   /* MULTILANG_3.06_END */
    videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
    qIdx:[13,14]},
   {id:"3.07",name:"Rework Under Control",nameKo:"재작업 관리",color:"#6B46C1",
@@ -630,6 +762,28 @@ const CHAPTERS=[
    conceptEn:"A controlled rework/repair/recovery process to reduce scrap and non-quality costs.",
    points:[{l:"Rework",v:"원래 사양으로 복원 (표준화 필수)"},{l:"Repair",v:"사양과 다르게 복원 → 고객 승인 필수"},{l:"검증",v:"재작업자 ≠ 최종 검증자 (4 Eyes)"},{l:"기록",v:"부품 마킹 + 결함명 기록 필수"}],
    req:["재작업 작업 지침(WI) 가용","자격자(Level L) 수행","오프라인 재작업 부품 개별 마킹 및 기록"],
+   pointsEn:[{l:"Rework",v:"Restore to original spec (standardization required)"},{l:"Repair",v:"Restore differently from spec → Customer approval required"},{l:"Verify",v:"Reworker ≠ final inspector (4 Eyes Principle)"},{l:"Record",v:"Part marking + defect name recording mandatory"}],
+   reqEn:["Rework work instruction (WI) available & followed","Qualified operator (Level L) performs rework","Offline rework parts individually marked & registered"],
+   /* MULTILANG_3.07_START */
+   concept_vi:"Quy trình sửa lại/sửa chữa/thu hồi có kiểm soát nhằm giảm phế phẩm và chi phí chất lượng kém.",
+   points_vi:[{l:"Sửa lại",v:"Khôi phục về thông số gốc (bắt buộc tiêu chuẩn hoá)"},{l:"Sửa chữa",v:"Khôi phục khác thông số → Cần chấp thuận của KH"},{l:"Xác nhận",v:"Người sửa ≠ người kiểm tra cuối (4 Eyes)"},{l:"Ghi chép",v:"Đánh dấu chi tiết + ghi tên lỗi bắt buộc"}],
+   req_vi:["WI sửa lại có sẵn & được tuân thủ","Công nhân đủ tiêu chuẩn (Level L) thực hiện","Chi tiết sửa lại ngoại tuyến được đánh dấu & đăng ký riêng lẻ"],
+   concept_ne:"स्क्र्याप घटाउन र गैर-गुणस्तर लागत कम गर्न नियन्त्रित पुन: कार्य/मर्मत/पुन: प्राप्ति प्रक्रिया।",
+   points_ne:[{l:"पुन: कार्य",v:"मूल विशिष्टतामा पुनर्स्थापना (मानकीकरण आवश्यक)"},{l:"मर्मत",v:"विशिष्टताभन्दा फरक पुनर्स्थापना → ग्राहक अनुमोदन आवश्यक"},{l:"प्रमाणीकरण",v:"पुन: कार्यकर्ता ≠ अन्तिम निरीक्षक (4 Eyes)"},{l:"रेकर्ड",v:"भाग चिन्हन + दोष नाम रेकर्ड अनिवार्य"}],
+   req_ne:["पुन: कार्य WI उपलब्ध र पालना गरिन्छ","योग्य श्रमिक (Level L) ले गर्छ","अफलाइन पुन: कार्य भागहरू व्यक्तिगत रूपमा चिन्हित र दर्ता"],
+   concept_ru:"Контролируемый процесс переделки/ремонта/восстановления для сокращения брака и затрат на несоответствующее качество.",
+   points_ru:[{l:"Переделка",v:"Восстановление до исходных требований (обязательна стандартизация)"},{l:"Ремонт",v:"Восстановление с отклонением от спецификации → Требуется одобрение заказчика"},{l:"Верификация",v:"Исполнитель ≠ финальный контролёр (4 Eyes)"},{l:"Запись",v:"Маркировка детали + запись наименования дефекта обязательна"}],
+   req_ru:["Рабочая инструкция по переделке доступна и соблюдается","Выполняется квалифицированным оператором (Level L)","Детали оффлайн-переделки индивидуально маркируются и регистрируются"],
+   concept_uz:"Chiqindini kamaytirish va sifatsizlik xarajatlarini kamaytirishga qaratilgan nazorat ostidagi qayta ishlash/ta'mirlash/tiklash jarayoni.",
+   points_uz:[{l:"Qayta ishlash",v:"Asl spetsifikatsiyani tiklash (standartlashtirish majburiy)"},{l:"Ta'mirlash",v:"Spetsifikatsiyadan farqli tiklash → Mijoz roziligini talab"},{l:"Tekshiruv",v:"Bajaruvchi ≠ yakuniy tekshiruvchi (4 Eyes)"},{l:"Yozuv",v:"Qism belgilash + nuqson nomi yozish majburiy"}],
+   req_uz:["Qayta ishlash WI mavjud va bajariladi","Malakali ishchi (Level L) bajaradi","Offlayn qayta ishlangan qismlar alohida belgilanadi va ro'yxatga olinadi"],
+   concept_si:"ප්‍රතික්ෂේප අඩු කිරීමට සහ ගුණාත්මකභාවය නොතිබීමේ වියදම් අඩු කිරීමට ගෙන යන පාලිත නැවත සකස් කිරීම/අලුත්වැඩියාව/ප්‍රකෘතිය ක්‍රියාවලිය.",
+   points_si:[{l:"නැවත සකස්",v:"මූලික පිරිවිතරට ප්‍රකෘතිය (සම්මතකරණය අවශ්‍ය)"},{l:"අලුත්වැඩියාව",v:"පිරිවිතරයෙන් වෙනස් ප්‍රකෘතිය → පාරිභෝගික අනුමැතිය අවශ්‍ය"},{l:"සත්‍යාපනය",v:"කාර්යය කළ ≠ අවසාන පරීක්ෂකයා (4 Eyes)"},{l:"වාර්තාව",v:"කොටස් සලකුණ + දෝෂ නාම වාර්තාව අත්‍යවශ්‍ය"}],
+   req_si:["නැවත සකස් කිරීමේ WI ලබාගත හැකි සහ අනුගමනය කෙරේ","සුදුසු ක්‍රියාකරු (Level L) ක්‍රියාත්මක කරයි","ඔෆ්ලයින් නැවත සකස් කළ කොටස් තනි තනිව සලකුණු කර ලියාපදිංචිය"],
+   concept_tr:"Hurda ve kalitesizlik maliyetlerini azaltmak için kontrollü yeniden işleme/onarım/kurtarma süreci.",
+   points_tr:[{l:"Yeniden İşleme",v:"Orijinal spesifikasyona geri dönüş (standardizasyon zorunlu)"},{l:"Onarım",v:"Spesifikasyondan farklı geri dönüş → Müşteri onayı gerekli"},{l:"Doğrulama",v:"Uygulayan ≠ nihai denetçi (4 Göz)"},{l:"Kayıt",v:"Parça işaretleme + hata adı kaydı zorunlu"}],
+   req_tr:["Yeniden işleme İş Talimatı mevcut ve uygulanıyor","Nitelikli operatör (Level L) uygular","Çevrimdışı yeniden işlenen parçalar ayrı ayrı işaretlenir & kaydedilir"],
+   /* MULTILANG_3.07_END */
    videoUrls:{ko:"",en:"https://www.youtube.com/embed/71rqQupS7Cs",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
    qIdx:[15,16]},
   {id:"5.07",name:"Kata QRCI",nameKo:"빠른 대응 지속 개선",color:"#00A854",
@@ -637,11 +791,156 @@ const CHAPTERS=[
    conceptEn:"A daily problem-solving and continuous improvement activity performed by GAP/Group Leaders using repeated PDCA cycles.",
    points:[{l:"1단계",v:"방향 설정 — 무엇을 해결할 것인가?"},{l:"2단계",v:"현재 상황 파악 — 지금 어디 있는가?"},{l:"3단계",v:"목표 상태 설정 — 어디로 갈 것인가?"},{l:"4단계",v:"PDCA 실험 — 장애물에 대한 반복 실험"}],
    req:["정의된 반응 규칙에 따라 Kata QRCI 개시","표준 프로세스에 따라 활동 수행","GAP Leader 80%가 주 1회 이상 mLean에서 개시"],
+   pointsEn:[{l:"Step 1",v:"Get the Direction — What to solve or improve?"},{l:"Step 2",v:"Grasp Current Situation — Where are we now?"},{l:"Step 3",v:"Establish Next Target Condition — Where to go?"},{l:"Step 4",v:"Experiment (PDCA) — Repeated experiments on obstacles"}],
+   reqEn:["Kata QRCI initiated per defined reaction rules","Activity performed following standard Kata QRCI process","80% of GAP Leaders initiate/close Kata QRCI in mLean weekly"],
+   /* MULTILANG_5.07_START */
+   concept_vi:"Hoạt động giải quyết vấn đề và cải tiến liên tục hàng ngày do GAP/Group Leader thực hiện, sử dụng vòng lặp PDCA lặp đi lặp lại.",
+   points_vi:[{l:"Bước 1",v:"Xác định hướng đi — Giải quyết/cải thiện điều gì?"},{l:"Bước 2",v:"Nắm hiện trạng — Chúng ta đang ở đâu?"},{l:"Bước 3",v:"Đặt mục tiêu tiếp theo — Đi đến đâu?"},{l:"Bước 4",v:"Thực nghiệm PDCA — Lặp lại thực nghiệm trên trở ngại"}],
+   req_vi:["Kata QRCI được khởi động theo quy tắc phản ứng đã định","Hoạt động theo đúng quy trình Kata QRCI tiêu chuẩn","80% GAP Leader khởi động/kết thúc Kata QRCI trong mLean hàng tuần"],
+   concept_ne:"GAP/Group Leader ले प्रतिदिन PDCA चक्र दोहोर्याएर समस्या समाधान र निरन्तर सुधार गर्छन्।",
+   points_ne:[{l:"चरण १",v:"दिशा निर्धारण — के समाधान/सुधार गर्ने?"},{l:"चरण २",v:"वर्तमान अवस्था बुझ्ने — हामी अहिले कहाँ छौं?"},{l:"चरण ३",v:"अर्को लक्ष्य अवस्था — कहाँ जाने?"},{l:"चरण ४",v:"PDCA प्रयोग — अवरोधहरूमा दोहोरिएको प्रयोग"}],
+   req_ne:["परिभाषित प्रतिक्रिया नियम अनुसार Kata QRCI सुरु गरिन्छ","मानक Kata QRCI प्रक्रिया अनुसार गतिविधि गरिन्छ","८०% GAP Leader ले साप्ताहिक mLean मा Kata QRCI सुरु/बन्द गर्छन्"],
+   concept_ru:"Ежедневная деятельность по решению проблем и непрерывному совершенствованию, выполняемая GAP/Group Leader с использованием повторяющихся циклов PDCA.",
+   points_ru:[{l:"Шаг 1",v:"Определить направление — Что решать/улучшать?"},{l:"Шаг 2",v:"Оценить текущую ситуацию — Где мы сейчас?"},{l:"Шаг 3",v:"Установить следующее целевое состояние — Куда идти?"},{l:"Шаг 4",v:"Эксперименты PDCA — Повторяющиеся эксперименты с препятствиями"}],
+   req_ru:["Kata QRCI запускается согласно определённым правилам реагирования","Деятельность ведётся по стандартному процессу Kata QRCI","80% GAP Leader еженедельно открывают/закрывают Kata QRCI в mLean"],
+   concept_uz:"GAP/Group Leader tomonidan har kuni takroriy PDCA tsikllari yordamida muammolarni hal qilish va doimiy takomillashtirish faoliyati.",
+   points_uz:[{l:"1-qadam",v:"Yo'nalishni belgilash — Nima hal qilish/yaxshilash kerak?"},{l:"2-qadam",v:"Joriy vaziyatni baholash — Hozir qayerdamiz?"},{l:"3-qadam",v:"Keyingi maqsad holatini belgilash — Qayerga boramiz?"},{l:"4-qadam",v:"PDCA tajribalari — To'siqlar bo'yicha takroriy tajribalar"}],
+   req_uz:["Kata QRCI belgilangan reaktsiya qoidalariga ko'ra boshlanadi","Faoliyat standart Kata QRCI jarayoni bo'yicha bajariladi","GAP Liderlarning 80% i haftalik mLean da Kata QRCI ni boshlaydi/yakunlaydi"],
+   concept_si:"GAP/Group Leader විසින් PDCA චක්‍ර නැවත නැවත භාවිතා කරමින් සිදු කෙරෙන දෛනික ගැටලු විසඳීම සහ අඛණ්ඩ වැඩිදියුණු කිරීමේ කාර්යය.",
+   points_si:[{l:"පියවර 1",v:"දිශානතිය — කුමක් විසඳීමට/වැඩිදියුණු කිරීමට?"},{l:"පියවර 2",v:"වත්මන් තත්ත්වය — දැන් අපි කොතැනද?"},{l:"පියවර 3",v:"ඊළඟ ඉලක්ක තත්ත්වය — කොතැනට යන්නද?"},{l:"පියවර 4",v:"PDCA අත්හදා බැලීම් — බාධා මත නැවත නැවත අත්හදා"}],
+   req_si:["Kata QRCI නිර්වචිත ප්‍රතික්‍රියා නීති අනුව ආරම්භ කෙරේ","ක්‍රියාකාරකම් සම්මත Kata QRCI ක්‍රියාවලිය අනුව සිදු කෙරේ","GAP Leaders 80% ක් සතිපතා mLean හි Kata QRCI ආරම්භ/අවසන් කරයි"],
+   concept_tr:"GAP/Grup Liderleri tarafından tekrarlayan PDCA döngüleri kullanılarak gerçekleştirilen günlük problem çözme ve sürekli iyileştirme faaliyeti.",
+   points_tr:[{l:"Adım 1",v:"Yönü belirle — Ne çözmek/iyileştirmek gerekiyor?"},{l:"Adım 2",v:"Mevcut durumu değerlendir — Şu an neredeyiz?"},{l:"Adım 3",v:"Sonraki hedef durumu belirle — Nereye gideceğiz?"},{l:"Adım 4",v:"PDCA Deneyleri — Engellerle tekrarlayan deneyler"}],
+   req_tr:["Kata QRCI tanımlanmış tepki kurallarına göre başlatılır","Faaliyet standart Kata QRCI sürecine göre yürütülür","GAP Liderlerinin %80'i haftalık mLean'de Kata QRCI başlatır/kapatır"],
+   /* MULTILANG_5.07_END */
    videoUrls:{ko:"",en:"",vi:"",ne:"",ru:"",uz:"",si:"",tr:""},
    qIdx:[17,18,19]},
 ];
 
-// ══════════════════════════════════════════════════
+// ══
+const QUIZ_LANG = {
+  vi: [{ch:"",q:"Khi xảy ra sự cố tại hiện trường, hành động đầu tiên của FAST là gì?",o:["Dừng làm việc và kiểm tra xem tiêu chuẩn (WI, thông số...) có được tuân thủ không","Dừng ngay dây chuyền và báo cáo quản lý","Nhanh chóng phân loại hàng lỗi và đưa vào kho","Giảm tốc độ sản xuất và tiếp tục"],a:0},
+{ch:"",q:"FAST (Ưu tiên áp dụng tiêu chuẩn) chủ yếu do ai thực hiện?",o:["Nhân viên kiểm tra chuyên trách phòng chất lượng","GAP/Group Leader hoặc Kỹ thuật viên dây chuyền","Quản lý nhà máy","Nhân viên phụ trách khách hàng"],a:1},
+{ch:"",q:"Khi kiểm tra FAST cho thấy tiêu chuẩn được tuân thủ nhưng vấn đề vẫn không giải quyết được, bước tiếp theo là gì?",o:["Tiếp tục sản xuất","Thay thế công nhân","Khởi động Kata QRCI để điều tra nguyên nhân","Loại bỏ toàn bộ sản phẩm"],a:2},
+{ch:"",q:"Lý do chính để sử dụng Poka Yoke (chống sai lỗi) là gì?",o:["Để tăng tốc độ sản xuất","Vì con người dễ mắc lỗi nên cần tự động phòng ngừa và phát hiện lỗi","Để giảm thời gian đào tạo công nhân","Để giảm tồn kho"],a:1},
+{ch:"",q:"Khi thiết bị Poka Yoke bị hỏng và không có Backup Mode, phải làm gì?",o:["Tiếp tục sản xuất dù có lỗi","Công nhân tự kiểm tra theo phán đoán cá nhân","Phải dừng sản xuất","Để Final Inspection lọc ra"],a:2},
+{ch:"",q:"Sau khi xác minh Poka Yoke, cái gì được hiển thị trên dây chuyền hoặc trạm làm việc?",o:["Đèn cảnh báo đỏ","Padlock (biểu tượng khóa)","Bảng ghi số lượng lỗi","Nhãn dán hoàn thành công việc"],a:1},
+{ch:"",q:"OK First Part (Kiểm tra chi tiết đầu tiên OK) được thực hiện khi nào?",o:["Định kỳ mỗi tháng một lần","Khi bắt đầu ca, sau khi chuyển đổi sản phẩm, sau khi khắc phục sự cố thiết bị","Chỉ khi có lỗi xảy ra","Chỉ khi có kiểm toán khách hàng"],a:1},
+{ch:"",q:"Khi điền vào checklist OK First Part, điều gì phải được đánh dấu cho mỗi hạng mục?",o:["Cảm nhận của công nhân (tốt/xấu)","Trạng thái OK hoặc NOK của từng hạng mục","Mục tiêu số lượng sản xuất","Thông tin liên lạc của khách hàng"],a:1},
+{ch:"",q:"Điều nào mô tả đúng nhất vai trò của công nhân trong Check-Do-Check?",o:["Chỉ tập trung vào đạt mục tiêu sản xuất","Kiểm tra trước và sau công việc để không nhận lỗi, không tạo ra lỗi, không chuyển lỗi","Giao kiểm tra cho nhân viên Final Inspection","Chuyển sang công đoạn tiếp theo khi phát hiện lỗi"],a:1},
+{ch:"",q:"Khi phát hiện sản phẩm lỗi trong quá trình làm việc, hành động đầu tiên là gì?",o:["Chuyển sang công đoạn tiếp theo và báo cáo sau","Đánh dấu là lỗi và để riêng vào Bin đã quy định","Tự sửa chữa rồi tiếp tục sản xuất","Báo cáo tổng hợp khi kết thúc ca"],a:1},
+{ch:"",q:"Mục đích sử dụng Tally Sheet (bảng thống kê) trong Check-Do-Check là gì?",o:["Ghi lại giờ vào/ra của công nhân","Ghi lại loại và số lượng lỗi phát hiện được","Hiển thị tình trạng đạt mục tiêu sản xuất","Quản lý lịch sử hỏng hóc thiết bị"],a:1},
+{ch:"",q:"Final Inspection (Kiểm tra cuối cùng) được thực hiện khi nào?",o:["Khi nguyên liệu đầu vào","Thường xuyên trong quá trình sản xuất","Sau công đoạn lắp ráp cuối cùng, trước khi đóng gói","Sau khi giao hàng cho khách"],a:2},
+{ch:"",q:"TQW (Tường kiểm tra chất lượng tạm thời) được lắp đặt trong tình huống nào?",o:["Khi quy trình sản xuất chưa ổn định và có nguy cơ giao hàng lỗi cho khách","Lắp đặt vĩnh viễn để tăng tốc sản xuất","Thay thế công nhân khi thiếu nhân lực","Lắp đặt khi ra mắt sản phẩm mới"],a:0},
+{ch:"",q:"Khi phát hiện sản phẩm lỗi (NOK), hành động đầu tiên là gì?",o:["Đánh dấu là lỗi và tách ngay khỏi hàng tốt","Để yên để không cản trở dòng chảy sản xuất","Xử lý tổng hợp sau khi kết thúc ca","Chuyển cho nhân viên Final Inspection"],a:0},
+{ch:"",q:"Màu nhãn dán cho sản phẩm lỗi có thể sửa lại được là gì?",o:["Đỏ (Red)","Xanh lá (Green)","Vàng (Yellow)","Xanh dương (Blue)"],a:2},
+{ch:"",q:"Điều nào mô tả đúng về sửa lại ngoại tuyến (Off-line Rework)?",o:["Thực hiện tại trạm chuyên dụng riêng cho những sửa lại khó thực hiện trên dây chuyền","Ai cũng có thể thực hiện tự do ở không gian trống","Đưa trực tiếp vào dây chuyền sau khi sửa mà không cần kiểm tra riêng","Không cần ghi lại kết quả sửa lại"],a:0},
+{ch:"",q:"Lý do phải ghi lại nội dung lỗi trên chi tiết đã sửa là gì?",o:["Để dùng trong đánh giá hiệu suất công nhân","Để có thể truy xuất khi có khiếu nại từ khách hàng hoặc trả hàng bảo hành","Để tính chi phí sửa lại cho khách hàng","Ghi lại chỉ là khuyến nghị, không bắt buộc"],a:1},
+{ch:"",q:"Kata QRCI chủ yếu được áp dụng khi nào tại hiện trường?",o:["Một lần khi lập mục tiêu hàng năm","Chỉ khi có kiểm toán khách hàng","Lặp đi lặp lại hàng ngày khi có vấn đề hoặc cần cải tiến","Chỉ trong đào tạo nhân viên mới"],a:2},
+{ch:"",q:"Kata QRCI lặp lại chu kỳ nào để giải quyết vấn đề?",o:["Báo cáo→Phê duyệt→Thực hiện→Hoàn thành","Lập kế hoạch (Plan)→Thực hiện (Do)→Kiểm tra (Check)→Hành động (Act)","Phát hiện→Cách ly→Loại bỏ→Đặt lại","Họp→Quyết định→Chỉ đạo→Đánh giá"],a:1},
+{ch:"",q:"Nguyên tắc tham gia nhóm nào được coi trọng trong Kata QRCI?",o:["Chỉ quản lý mới được đề xuất ý tưởng","Ý kiến công nhân chỉ để tham khảo, quản lý quyết định","Ý kiến của công nhân hiện trường là cốt lõi vì họ hiểu quy trình nhất","Ý kiến chuyên gia bên ngoài được ưu tiên nhất"],a:2}],
+  ne: [{ch:"",q:"कार्यस्थलमा समस्या उत्पन्न भएमा FAST को पहिलो कदम के हो?",o:["काम रोकेर मानक (WI, प्यारामिटर आदि) पालना भएको छ कि छैन जाँच गर्ने","तुरुन्त लाइन बन्द गरेर व्यवस्थापकलाई सूचित गर्ने","छिटो दोषी सामान छानेर गोदाममा राख्ने","उत्पादन गति घटाएर जारी राख्ने"],a:0},
+{ch:"",q:"FAST मुख्यतः कसले गर्छ?",o:["गुणस्तर विभागका समर्पित निरीक्षक","GAP/Group Leader वा लाइन प्राविधिक","कारखाना प्रमुख","ग्राहक प्रतिनिधि"],a:1},
+{ch:"",q:"FAST जाँचले मानक पालना भएको देखाए पनि समस्या नसुल्झिएमा अर्को कदम के हो?",o:["उत्पादन जारी राख्ने","श्रमिक बदल्ने","कारण अनुसन्धानका लागि Kata QRCI सुरु गर्ने","सम्पूर्ण उत्पादन स्क्र्याप गर्ने"],a:2},
+{ch:"",q:"Poka Yoke प्रयोग गर्नुको मुख्य कारण के हो?",o:["उत्पादन गति बढाउन","मानिसले गल्ती गर्छन् भनेर दोषपूर्ण उत्पादन स्वचालित रूपमा रोक्न र पत्ता लगाउन","श्रमिक तालिम समय घटाउन","सूची घटाउन"],a:1},
+{ch:"",q:"Poka Yoke उपकरण बिग्रिएमा र Backup Mode नभएमा के गर्ने?",o:["दोष आए पनि उत्पादन जारी राख्ने","श्रमिकले आफ्नै निर्णयमा जाँच गर्ने","उत्पादन रोक्नुपर्छ","Final Inspection ले छान्ला भनेर छाड्ने"],a:2},
+{ch:"",q:"Poka Yoke प्रमाणित गरेपछि लाइन वा स्टेसनमा के देखाइन्छ?",o:["रातो चेतावनी बत्ती","Padlock (ताल्चा चिन्ह)","दोष संख्या रेकर्ड तालिका","कार्य पूर्ण स्टिकर"],a:1},
+{ch:"",q:"OK First Part कहिले गरिन्छ?",o:["महिनामा एक पटक नियमित रूपमा","सिफ्ट सुरु, उत्पाद परिवर्तन पछि, उपकरण खराबी सुधार पछि","दोष उत्पन्न भएपछि मात्र","ग्राहक अडिट हुँदा मात्र"],a:1},
+{ch:"",q:"OK First Part चेकलिस्ट भर्दा प्रत्येक वस्तुमा के चिन्ह लगाउनुपर्छ?",o:["श्रमिकको भावना (राम्रो/नराम्रो)","प्रत्येक वस्तुको OK वा NOK अवस्था","उत्पादन मात्रा लक्ष्य","ग्राहक सम्पर्क जानकारी"],a:1},
+{ch:"",q:"Check-Do-Check मा श्रमिकको भूमिका सबैभन्दा राम्रोसँग कसले वर्णन गर्छ?",o:["उत्पादन लक्ष्यमा मात्र ध्यान दिने","काम अघि र पछि जाँच गरेर दोष नस्वीकार्ने, नबनाउने, नपठाउने","Final Inspection लाई जाँच जिम्मा दिने","दोष भेटिएमा अर्को प्रक्रियामा पठाउने"],a:1},
+{ch:"",q:"काम गर्दा दोषी सामान फेला पर्दा पहिलो कदम के हो?",o:["अर्को प्रक्रियामा पठाएर पछि रिपोर्ट गर्ने","दोषको चिन्ह लगाएर निर्धारित Bin मा छुट्याउने","आफ्नै निर्णयमा मर्मत गरेर उत्पादन जारी राख्ने","सिफ्ट सकिएपछि एकैपटक रिपोर्ट गर्ने"],a:1},
+{ch:"",q:"Check-Do-Check मा Tally Sheet प्रयोग गर्नुको उद्देश्य के हो?",o:["श्रमिकको आउने-जाने समय रेकर्ड गर्न","फेला परेका दोषको प्रकार र संख्या रेकर्ड गर्न","उत्पादन लक्ष्य पूर्ति अवस्था देखाउन","उपकरण खराबी इतिहास व्यवस्थापन गर्न"],a:1},
+{ch:"",q:"Final Inspection कहिले गरिन्छ?",o:["कच्चा माल आउँदा","उत्पादन प्रक्रिया बीचमा बारम्बार","अन्तिम असेम्बली पछि, प्याकेजिङ अघि","ग्राहकलाई डेलिभरी पछि"],a:2},
+{ch:"",q:"TQW कुन अवस्थामा स्थापना गरिन्छ?",o:["उत्पादन प्रक्रिया अझै स्थिर नभएर ग्राहकलाई दोष जाने जोखिम हुँदा","उत्पादन गति बढाउन स्थायी रूपमा राखिन्छ","श्रमिक अपुग हुँदा जाँच गर्न","नयाँ उत्पाद सुरुवात उपलक्ष्यमा"],a:0},
+{ch:"",q:"दोषी सामान (NOK भाग) फेला पर्दा पहिलो कदम के हो?",o:["दोषको चिन्ह लगाएर तुरुन्त राम्रो सामानबाट छुट्याउने","उत्पादन प्रवाहमा बाधा नपर्न त्यसैगरी छाड्ने","सिफ्ट सकिएपछि एकैचोटि प्रशोधन गर्ने","Final Inspection लाई हस्तान्तरण गर्ने"],a:0},
+{ch:"",q:"पुन: कार्य गर्न सकिने दोषी सामानमा टाँसिने लेबलको रङ के हो?",o:["रातो (Red)","हरियो (Green)","पहेंलो (Yellow)","नीलो (Blue)"],a:2},
+{ch:"",q:"अफलाइन पुन: कार्य बारे सही व्याख्या कुन हो?",o:["लाइनमा गर्न गाह्रो पुन: कार्यलाई छुट्टै समर्पित स्टेसनमा गर्ने","जो कोहीले खाली ठाउँमा स्वतन्त्र रूपमा गर्न सक्छन्","पुन: कार्य पछि छुट्टै जाँच नगरी सिधै लाइनमा हाल्ने","पुन: कार्यको नतिजा रेकर्ड गर्नु पर्दैन"],a:0},
+{ch:"",q:"पुन: कार्य गरिएको सामानमा दोषको विवरण रेकर्ड गर्नुपर्ने कारण के हो?",o:["श्रमिक कार्यसम्पादन मूल्यांकनमा प्रयोग गर्न","भविष्यमा ग्राहक गुनासो वा वारेन्टी फिर्ता हुँदा ट्रेस गर्न सक्नु","ग्राहकलाई पुन: कार्य लागत चार्ज गर्न","रेकर्ड अनिवार्य नभई सिफारिस मात्र हो"],a:1},
+{ch:"",q:"Kata QRCI मुख्यतः कहिले कार्यस्थलमा प्रयोग गरिन्छ?",o:["वार्षिक लक्ष्य तयार गर्दा एक पटक","ग्राहक अडिट हुँदा मात्र","समस्या उत्पन्न हुँदा वा सुधार आवश्यक हुँदा प्रतिदिन दोहोर्याएर","नयाँ कर्मचारी तालिममा मात्र"],a:2},
+{ch:"",q:"Kata QRCI ले कुन चक्र दोहोर्याएर समस्या समाधान गर्छ?",o:["रिपोर्ट→अनुमोदन→कार्यान्वयन→समाप्त","योजना (Plan)→कार्यान्वयन (Do)→जाँच (Check)→कदम (Act)","पत्ता लगाउने→अलग गर्ने→फाल्ने→पुन: अर्डर","बैठक→निर्णय→निर्देशन→मूल्यांकन"],a:1},
+{ch:"",q:"Kata QRCI मा महत्त्वपूर्ण टिम सहभागिता सिद्धान्त कुन हो?",o:["व्यवस्थापकले मात्र विचार प्रस्ताव गर्न सक्छन्","श्रमिकको राय सन्दर्भका लागि मात्र, निर्णय व्यवस्थापकले गर्छ","कार्यस्थल श्रमिकको राय मुख्य हो, किनकि उनीहरू प्रक्रिया सबैभन्दा राम्रोसँग जान्छन्","बाह्य विशेषज्ञको राय सबैभन्दा महत्त्वपूर्ण छ"],a:2}],
+  ru: [{ch:"",q:"Когда на рабочем месте возникает проблема, каково первое действие по FAST?",o:["Остановить работу и проверить, соблюдаются ли стандарты (РИ, параметры и т.д.)","Немедленно остановить линию и доложить руководителю","Быстро отобрать дефектные изделия и отправить на склад","Снизить скорость производства и продолжать"],a:0},
+{ch:"",q:"Кто преимущественно выполняет FAST?",o:["Специализированный контролёр отдела качества","GAP/Group Leader или линейный технолог","Начальник завода","Представитель заказчика"],a:1},
+{ch:"",q:"Если проверка FAST показала соблюдение стандартов, но проблема не устранена, каков следующий шаг?",o:["Продолжить производство","Заменить оператора","Запустить Kata QRCI для дополнительного расследования причины","Отправить всю продукцию в брак"],a:2},
+{ch:"",q:"Какова главная причина использования Poka Yoke?",o:["Для увеличения скорости производства","Поскольку люди совершают ошибки, для автоматического предотвращения и обнаружения дефектов","Для сокращения времени обучения операторов","Для уменьшения запасов"],a:1},
+{ch:"",q:"Если устройство Poka Yoke вышло из строя и Backup Mode отсутствует, что делать?",o:["Продолжать производство даже при наличии дефектов","Оператор проводит проверку по собственному усмотрению","Производство необходимо остановить","Оставить для фильтрации на финальном контроле"],a:2},
+{ch:"",q:"Что отображается на линии или станции после верификации Poka Yoke?",o:["Красный сигнальный световой индикатор","Padlock (символ замка)","Таблица учёта количества дефектов","Стикер о завершении работы"],a:1},
+{ch:"",q:"Когда выполняется OK First Part?",o:["Регулярно раз в месяц","При начале смены, после переналадки, после восстановления после поломки оборудования","Только когда возникает дефект","Только при аудите заказчика"],a:1},
+{ch:"",q:"При заполнении чек-листа OK First Part что обязательно указывается для каждого пункта?",o:["Ощущение оператора (хорошо/плохо)","Статус OK или NOK по каждому пункту","Целевой объём производства","Контактная информация заказчика"],a:1},
+{ch:"",q:"Какое из следующих утверждений лучше всего описывает роль оператора в Check-Do-Check?",o:["Сосредоточиться только на достижении производственных целей","Проверять до и после работы, чтобы не принимать, не создавать и не передавать дефекты","Передать контроль сотруднику финального контроля","Передавать на следующий процесс при обнаружении дефекта"],a:1},
+{ch:"",q:"Что нужно сделать в первую очередь при обнаружении бракованного изделия?",o:["Передать на следующую операцию и доложить позже","Пометить как дефект и отделить в отведённый Bin","Самостоятельно отремонтировать и продолжить производство","Составить общий отчёт в конце смены"],a:1},
+{ch:"",q:"Для чего используется Tally Sheet в Check-Do-Check?",o:["Для фиксации времени прихода/ухода операторов","Для регистрации вида и количества обнаруженных дефектов","Для отображения статуса выполнения производственного плана","Для управления историей неисправностей оборудования"],a:1},
+{ch:"",q:"Когда проводится Final Inspection?",o:["При поступлении сырья","Периодически в ходе производственного процесса","После последней сборочной операции, перед упаковкой","После поставки продукции заказчику"],a:2},
+{ch:"",q:"В какой ситуации устанавливается TQW?",o:["Когда производственный процесс ещё не стабилен и существует риск поставки дефектов заказчику","Устанавливается постоянно для повышения скорости производства","Когда не хватает операторов для проведения контроля","В честь запуска нового продукта"],a:0},
+{ch:"",q:"Что нужно сделать в первую очередь при обнаружении бракованной детали (NOK)?",o:["Пометить как дефект и немедленно отделить от качественных деталей","Оставить, чтобы не нарушать поток производства","Обработать все вместе после окончания смены","Передать сотруднику финального контроля"],a:0},
+{ch:"",q:"Какого цвета этикетка наклеивается на бракованную деталь, которую можно переделать?",o:["Красная (Red)","Зелёная (Green)","Жёлтая (Yellow)","Синяя (Blue)"],a:2},
+{ch:"",q:"Какое из следующих утверждений верно в отношении оффлайн-переделки?",o:["Переделка, которую сложно выполнить на линии, проводится на специально выделенной станции","Любой может выполнять её в свободном пространстве","После переделки деталь запускается в процесс без отдельного контроля","Результаты переделки не нужно записывать"],a:0},
+{ch:"",q:"Почему необходимо записывать содержание дефекта на переделанной детали?",o:["Для использования в оценке производительности оператора","Чтобы обеспечить возможность прослеживаемости при претензиях заказчика или возврате по гарантии","Для выставления счёта заказчику за переделку","Запись является рекомендацией, а не обязательным требованием"],a:1},
+{ch:"",q:"Когда преимущественно применяется Kata QRCI на производственном участке?",o:["Один раз при постановке годовых целей","Только при аудите заказчика","Ежедневно и многократно при возникновении проблем или необходимости улучшений","Только при обучении новых сотрудников"],a:2},
+{ch:"",q:"Какой цикл повторяет Kata QRCI при решении проблем?",o:["Доклад→Утверждение→Исполнение→Завершение","Планирование (Plan)→Исполнение (Do)→Проверка (Check)→Действие (Act)","Обнаружение→Изоляция→Утилизация→Повторный заказ","Совещание→Решение→Указание→Оценка"],a:1},
+{ch:"",q:"Какой принцип участия команды важен в Kata QRCI?",o:["Только руководители могут предлагать идеи","Мнения операторов учитываются как справочные, решение принимает руководитель","Мнение производственных операторов является ключевым, поскольку они лучше всего знают процесс","Мнение внешних экспертов имеет наибольший приоритет"],a:2}],
+  uz: [{ch:"",q:"Ishchi joyda muammo yuzaga kelganda FAST ning birinchi harakati nima?",o:["Ishni to'xtatib standartlar (WI, parametrlar va h.k.) bajarilayotganini tekshirish","Liniyani darhol to'xtatib rahbarga xabar berish","Tez nuqsonli mahsulotlarni ajratib omborda saqlash","Ishlab chiqarish tezligini kamaytirish va davom etish"],a:0},
+{ch:"",q:"FAST ni asosan kim bajaradi?",o:["Sifat bo'limining maxsus nazoratchi","GAP/Group Leader yoki liniya texniki","Zavod boshlig'i","Mijoz vakili"],a:1},
+{ch:"",q:"FAST tekshiruvi standartlar bajarilganini ko'rsatsa ham muammo hal bo'lmasa, keyingi qadam nima?",o:["Ishlab chiqarishni davom ettirish","Ishchini almashtirish","Sababni qo'shimcha tekshirish uchun Kata QRCI ni boshlash","Barcha mahsulotni chiqindi qilish"],a:2},
+{ch:"",q:"Poka Yoke dan foydalanishning asosiy sababi nima?",o:["Ishlab chiqarish tezligini oshirish uchun","Odamlar xato qilishi mumkin bo'lganligi uchun nuqsonli mahsulotni avtomatik tarzda oldini olish va aniqlash","Ishchi o'qitish vaqtini qisqartirish uchun","Zahirani kamaytirish uchun"],a:1},
+{ch:"",q:"Poka Yoke qurilmasi ishdan chiqqanda va Backup Mode mavjud bo'lmaganda nima qilish kerak?",o:["Nuqson bo'lsa ham ishlab chiqarishni davom ettirish","Ishchi o'z qaroriga ko'ra tekshiradi","Ishlab chiqarishni to'xtatish kerak","Final Inspection filtrlab olsin deb qoldirish"],a:2},
+{ch:"",q:"Poka Yoke tekshiruvidan so'ng liniya yoki stansiyada nima ko'rsatiladi?",o:["Qizil ogohlantirish chirog'i","Padlock (qulf belgisi)","Nuqson miqdori hisobi jadvali","Ish tugallandi stikerini"],a:1},
+{ch:"",q:"OK First Part qachon bajariladi?",o:["Oyda bir marta muntazam ravishda","Smena boshida, mahsulot almashtiruvidan keyin, uskunalar nosozligini bartaraf etgandan keyin","Faqat nuqson yuzaga kelganda","Faqat mijoz auditi o'tkazilganda"],a:1},
+{ch:"",q:"OK First Part nazorat ro'yxatini to'ldirishda har bir element uchun nima belgilanishi shart?",o:["Ishchining his-tuyg'usi (yaxshi/yomon)","Har bir elementning OK yoki NOK holati","Ishlab chiqarish miqdori maqsadi","Mijozning aloqa ma'lumotlari"],a:1},
+{ch:"",q:"Check-Do-Check da ishchining rolini qaysi biri eng to'g'ri tasvirlaydi?",o:["Faqat ishlab chiqarish maqsadiga e'tibor qaratish","Ish oldida va keyin tekshirib, nuqsonlarni qabul qilmaslik, yaratmaslik va o'tkazmaslik","Tekshirishni Final Inspection xodimiga topshirish","Nuqson topilganda keyingi jarayonga o'tkazish"],a:1},
+{ch:"",q:"Ish jarayonida nuqsonli mahsulot topilganda birinchi qadam nima?",o:["Keyingi jarayonga o'tkazib keyinroq xabar berish","Nuqson belgisini qo'yib belgilangan Bin ga ajratish","O'zi qaror qilib ta'mirlab ishlab chiqarishni davom ettirish","Smena oxirida umumiy hisobot berish"],a:1},
+{ch:"",q:"Check-Do-Check da Tally Sheet dan foydalanish maqsadi nima?",o:["Ishchilarning kelish-ketish vaqtini qayd etish","Topilgan nuqsonlarning turi va miqdorini qayd etish","Ishlab chiqarish maqsadi bajarilish holatini ko'rsatish","Uskunalar nosozligi tarixini boshqarish"],a:1},
+{ch:"",q:"Final Inspection qachon o'tkaziladi?",o:["Xom ashyo kirib kelganda","Ishlab chiqarish jarayoni davomida tez-tez","Oxirgi yig'ish bosqichidan keyin, qadoqlashdan oldin","Mahsulot mijozga yetkazib berilgandan keyin"],a:2},
+{ch:"",q:"TQW qaysi holatda o'rnatiladi?",o:["Ishlab chiqarish jarayoni hali barqaror bo'lmaganda va mijozga nuqson borish xavfi bo'lganda","Ishlab chiqarish tezligini oshirish uchun doimiy ravishda o'rnatiladi","Ishchilar yetarli bo'lmaganda tekshiruv uchun","Yangi mahsulot ishga tushirish munosabati bilan"],a:0},
+{ch:"",q:"Nuqsonli qism (NOK qism) topilganda birinchi qadam nima?",o:["Nuqson belgisini qo'yib darhol sifatli mahsulotdan ajratish","Ishlab chiqarish oqimiga to'sqinlik qilmaslik uchun shundayligicha qoldirish","Smena oxirida birgalikda qayta ishlash","Final Inspection xodimiga topshirish"],a:0},
+{ch:"",q:"Qayta ishlash mumkin bo'lgan nuqsonli mahsulotga yopishtiriladigan yorliq rangi nima?",o:["Qizil (Red)","Yashil (Green)","Sariq (Yellow)","Ko'k (Blue)"],a:2},
+{ch:"",q:"Offlayn qayta ishlash haqida qaysi bayonot to'g'ri?",o:["Liniyada qilish qiyin bo'lgan qayta ishlashni alohida maxsus stansiyada bajarish","Har kim bo'sh joyda erkin bajarishi mumkin","Qayta ishlashdan keyin alohida tekshiruvsiz to'g'ridan-to'g'ri jarayonga kiritish","Qayta ishlash natijalarini yozib qo'yish shart emas"],a:0},
+{ch:"",q:"Qayta ishlangan qismga nuqson mazmunini yozib qo'yish nima uchun zarur?",o:["Ishchi samaradorligini baholashda foydalanish uchun","Kelajakda mijozning shikoyati yoki kafolat bo'yicha qaytarish bo'lganda kuzatib borish imkonini berish uchun","Mijozga qayta ishlash xarajatlarini taqdim etish uchun","Yozuv majburiy emas, tavsiya xolos"],a:1},
+{ch:"",q:"Kata QRCI ishchi joyda asosan qachon qo'llaniladi?",o:["Yillik maqsadlarni belgilashda bir marta","Faqat mijoz auditi o'tkazilganda","Muammo yuzaga kelganda yoki takomillashtirish zarur bo'lganda har kuni takroriy","Faqat yangi xodimlarni o'qitishda"],a:2},
+{ch:"",q:"Kata QRCI muammolarni hal qilish uchun qaysi tsiklni takrorlaydi?",o:["Hisobot→Tasdiqlash→Bajarish→Tugallash","Rejalashtirish (Plan)→Bajarish (Do)→Tekshirish (Check)→Harakat (Act)","Aniqlash→Ajratish→Yo'q qilish→Qayta buyurtma","Yig'ilish→Qaror→Ko'rsatma→Baholash"],a:1},
+{ch:"",q:"Kata QRCI da muhim jamoaviy ishtirok printsipi qaysi?",o:["Faqat rahbarlar g'oya taklif qila oladi","Ishchilarning fikri ma'lumotnoma sifatida, qaror rahbar tomonidan qabul qilinadi","Ishlab chiqarish ishchilarining fikri muhim, chunki ular jarayonni eng yaxshi biladi","Tashqi mutaxassislarning fikri eng yuqori ustuvorlikka ega"],a:2}],
+  si: [{ch:"",q:"කාර්යස්ථලයේ ගැටලුවක් ඇති වූ විට FAST හි පළමු ක්‍රියාව කුමක්ද?",o:["වැඩ නතර කර ප්‍රමිතීන් (WI, පරාමිතීන් ආදිය) අනුගමනය කරන්නේ දැයි පරීක්ෂා කිරීම","රේඛාව වහාම නතර කර කළමනාකරුට දැනුම් දීම","දෝෂ සහිත නිෂ්පාදිත ඉක්මනින් වෙන් කර ගබඩාවේ ගබඩා කිරීම","නිෂ්පාදන වේගය අඩු කර දිගටම කිරීම"],a:0},
+{ch:"",q:"FAST ප්‍රධාන වශයෙන් කවුද සිදු කරන්නේ?",o:["ගුණාත්මක දෙපාර්තමේන්තුවේ විශේෂ පරීක්ෂකයා","GAP/Group Leader හෝ රේඛා තාක්ෂණවේදී","කර්මාන්ත ශාලා කළමනාකරු","පාරිභෝගික නියෝජිතයා"],a:1},
+{ch:"",q:"FAST පරීක්ෂාව ප්‍රමිතීන් පිළිපදිනු ලැබේ යැයි පෙන්වූ නමුත් ගැටලුව විසඳිය නොහැකි නම් ඊළඟ පියවර කුමක්ද?",o:["නිෂ්පාදනය දිගටම කිරීම","ක්‍රියාකරු ආදේශ කිරීම","හේතුව අතිරේකව විමර්ශනය කිරීමට Kata QRCI ආරම්භ කිරීම","සියලු නිෂ්පාදිත ප්‍රතික්ෂේප කිරීම"],a:2},
+{ch:"",q:"Poka Yoke භාවිතා කිරීමේ ප්‍රධාන හේතුව කුමක්ද?",o:["නිෂ්පාදන වේගය වැඩි කිරීමට","මිනිසුන් වැරදි කරන නිසා දෝෂ නිෂ්පාදනය ස්වයංක්‍රීයව වළක්වා ගැනීමට සහ හඳුනාගැනීමට","ක්‍රියාකරු පුහුණු කාලය අඩු කිරීමට","සංචිත අඩු කිරීමට"],a:1},
+{ch:"",q:"Poka Yoke උපාංගය බිඳවැටීමේදී Backup Mode නොමැති නම් කුමක් කළ යුතුද?",o:["දෝෂ ඇතිවුවත් නිෂ්පාදනය දිගටම කිරීම","ක්‍රියාකරු තම නිර්ණය අනුව පරීක්ෂා කිරීම","නිෂ්පාදනය නතර කළ යුතුය","Final Inspection හි පෙරීමට ඉඩ දීම"],a:2},
+{ch:"",q:"Poka Yoke සත්‍යාපනයෙන් පසු රේඛාව හෝ ස්ථානයේ කුමක් දිස් කෙරේද?",o:["රතු අනතුරු ඇඟවීමේ ආලෝකය","Padlock (අගුළ සංකේතය)","දෝෂ ප්‍රමාණ වාර්තා ලේඛනය","කාර්ය සම්පූර්ණ ස්ටිකරය"],a:1},
+{ch:"",q:"OK First Part කවදා සිදු කෙරේද?",o:["මාසිකව වරක් නිතිපතා","වැඩ මුර ආරම්භයේ, නිෂ්පාදිත මාරුවෙන් පසු, උපකරණ නිදොස් කිරීමෙන් පසු","දෝෂ ඇති වූ විට පමණක්","පාරිභෝගික විගණනය ඇති විට පමණක්"],a:1},
+{ch:"",q:"OK First Part පිරික්සුම් ලැයිස්තුව පිරවීමේදී සෑම අයිතමයකටම කුමක් සලකුණු කළ යුතුද?",o:["ක්‍රියාකරුගේ හැඟීම (හොඳ/නරක)","සෑම අයිතමයකම OK හෝ NOK තත්ත්වය","නිෂ්පාදන ප්‍රමාණ ඉලක්කය","පාරිභෝගික සම්බන්ධතා තොරතුරු"],a:1},
+{ch:"",q:"Check-Do-Check හි ක්‍රියාකරුගේ භූමිකාව හොඳම ලෙස විස්තර කරන්නේ කුමක්ද?",o:["නිෂ්පාදන ඉලක්ක සාක්ෂාත් කිරීමට පමණක් අවධානය යොමු කිරීම","වැඩ කිරීමට පෙර සහ පසු පරීක්ෂා කිරීමෙන් දෝෂ නොපිළිගන්නවා, නොනිර්මාණය කරනවා, නොදෙනවා","Final Inspection ක්‍රියාකරුට පරීක්ෂාව භාර දීම","දෝෂ ඇති වූ විට ඊළඟ ක්‍රියාවලියට ඉදිරිපත් කිරීම"],a:1},
+{ch:"",q:"වැඩ කිරීමේදී දෝෂ සහිත නිෂ්පාදිතයක් සොයාගත් විට පළමු ක්‍රියාව කුමක්ද?",o:["ඊළඟ ක්‍රියාවලියට ඉදිරිපත් කර පසුව වාර්තා කිරීම","දෝෂ ලෙස සලකුණු කර නියමිත Bin හි වෙන් කිරීම","තෙමාගේ නිර්ණය අනුව අලුත්වැඩියා කර නිෂ්පාදනය දිගටම කිරීම","වැඩ මුරය අවසානයේ ඒකාබද්ධව වාර්තා කිරීම"],a:1},
+{ch:"",q:"Check-Do-Check හි Tally Sheet භාවිතා කිරීමේ අරමුණ කුමක්ද?",o:["ක්‍රියාකරුවන්ගේ පැමිණීම/යාම වාර්තා කිරීම","සොයාගත් දෝෂ වර්ගය සහ ප්‍රමාණය වාර්තා කිරීම","නිෂ්පාදන ඉලක්ක සාක්ෂාත් කිරීමේ තත්ත්වය දර්ශනය කිරීම","උපකරණ ක්‍රියාකාරීත්වය නොතිබීමේ ඉතිහාසය"],a:1},
+{ch:"",q:"Final Inspection කවදා සිදු කෙරේද?",o:["අමුද්‍රව්‍ය ලැබෙන විට","නිෂ්පාදන ක්‍රියාවලිය මධ්‍යයේ නිතිපතා","අවසාන එකලස් කිරීමෙන් පසු, ඇසුරුම් කිරීමට පෙර","නිෂ්පාදිතය පාරිභෝගිකයාට බාර දීමෙන් පසු"],a:2},
+{ch:"",q:"TQW කුමන තත්ත්වයේදී ස්ථාපිත කෙරේද?",o:["නිෂ්පාදන ක්‍රියාවලිය තවම ස්ථාවර නොවී පාරිභෝගිකයාට දෝෂ යාමේ අවදානම ඇති විට","නිෂ්පාදන වේගය ඉහළ නැංවීමට ස්ථිරවම ස්ථාපිත කෙරේ","ක්‍රියාකරුවන් ඌනතාවයකදී පරීක්ෂා කිරීමට","නව නිෂ්පාදිතයක් දියත් කිරීමේ ස්මරණය"],a:0},
+{ch:"",q:"දෝෂ සහිත කොටසක් (NOK කොටස) සොයාගත් විට පළමු ක්‍රියාව කුමක්ද?",o:["දෝෂ ලෙස සලකුණු කර හොඳ නිෂ්පාදිතයෙන් වහාම වෙන් කිරීම","නිෂ්පාදන ප්‍රවාහයට බාධා නොකිරීමට ඉඩ දීම","වැඩ මුරය අවසානයේ ඒකාබද්ධව සකස් කිරීම","Final Inspection ක්‍රියාකරුට ඉදිරිපත් කිරීම"],a:0},
+{ch:"",q:"නැවත සකස් කළ හැකි දෝෂ සහිත නිෂ්පාදිතයේ ලේබල් වර්ණය කුමක්ද?",o:["රතු (Red)","හරිත (Green)","කහ (Yellow)","නිල් (Blue)"],a:2},
+{ch:"",q:"ඔෆ්ලයින් නැවත සකස් කිරීම ගැන නිවැරදි ප්‍රකාශය කුමක්ද?",o:["රේඛාවේ කිරීමට අපහසු නැවත සකස් කිරීම් වෙනම සමර්පිත ස්ථානයක සිදු කිරීම","ඕනෑ කෙනෙකුට හිස් අවකාශයේ නිදහසේ සිදු කළ හැකිය","නැවත සකස් කිරීමෙන් පසු වෙනම පරීක්ෂාවකින් තොරව ක්‍රියාවලියට ඇතුළු කිරීම","නැවත සකස් කිරීමේ ප්‍රතිඵල වාර්තා නොකළ හැකිය"],a:0},
+{ch:"",q:"නැවත සකස් කළ කොටස් දෝෂ අන්තර්ගතය වාර්තා කළ යුත්තේ ඇයි?",o:["ක්‍රියාකරු කාර්ය සාධන ඇගයීමේ භාවිතය සඳහා","අනාගතයේ පාරිභෝගික පැමිණිලි හෝ වගකීම් ආපසු හැරවීමේදී සෙවීමේ හැකියාව","නැවත සකස් කිරීමේ වියදම් පාරිභෝගිකයාගෙන් අය කිරීමට","වාර්තා කිරීම අත්‍යවශ්‍ය නොව නිර්දේශිත පමණි"],a:1},
+{ch:"",q:"Kata QRCI ප්‍රධාන වශයෙන් කාර්යස්ථලයේ කවදා භාවිතා කෙරේද?",o:["වාර්ෂික ඉලක්ක සකස් කිරීමේදී වරක්","පාරිභෝගික විගණනය ඇති විට පමණක්","ගැටලු ඇති විට හෝ වැඩිදියුණු කිරීම් අවශ්‍ය විට දිනෙන් දිනට","නව කාර්මිකයන්ගේ පුහුණුවේදී පමණක්"],a:2},
+{ch:"",q:"Kata QRCI ගැටලු විසඳීමේදී කුමන චක්‍රය නැවත නැවත භාවිත කරයිද?",o:["වාර්තාව→අනුමැතිය→ක්‍රියාත්මක→සම්පූර්ණ","සැලසුම් (Plan)→ක්‍රියාත්මක (Do)→පරීක්ෂා (Check)→ක්‍රියාව (Act)","සොයාගැනීම→වෙන් කිරීම→ඉවත් කිරීම→නැවත ඇණවුම","රැස්වීම→තීරණය→උපදෙස්→ඇගයීම"],a:1},
+{ch:"",q:"Kata QRCI හි වැදගත් කණ්ඩායම් සහභාගීත්ව මූලධර්මය කුමක්ද?",o:["කළමනාකරුවන්ට පමණක් අදහස් ඉදිරිපත් කළ හැකිය","ක්‍රියාකරුවන්ගේ අදහස් සඳහා, තීරණය කළමනාකරු ගනී","නිෂ්පාදන ක්‍රියාකරුවන්ගේ අදහස් ප්‍රධාන වෙයි, ඔවුන් ක්‍රියාවලිය හොඳම දන්නා නිසා","බාහිර විශේෂඥයන්ගේ අදහස් ඉහළම ප්‍රමුඛතාවය ලබයි"],a:2}],
+  tr: [{ch:"",q:"İş yerinde bir sorun oluştuğunda FAST'ın ilk eylemi nedir?",o:["İşi durdurup standartların (İT, parametreler vb.) uygulanıp uygulanmadığını kontrol etmek","Hattı hemen durdurup yöneticiye bildirmek","Hatalı ürünleri hızla ayıklayıp depoya yerleştirmek","Üretim hızını düşürüp devam etmek"],a:0},
+{ch:"",q:"FAST ağırlıklı olarak kim tarafından uygulanır?",o:["Kalite bölümü uzman denetçisi","GAP/Grup Lideri veya Hat Teknisyeni","Fabrika müdürü","Müşteri temsilcisi"],a:1},
+{ch:"",q:"FAST kontrolü standartların uygulandığını gösterse de sorun çözülmezse bir sonraki adım nedir?",o:["Üretime devam etmek","Operatörü değiştirmek","Nedeni araştırmak için Kata QRCI başlatmak","Tüm ürünleri hurdaya çıkarmak"],a:2},
+{ch:"",q:"Poka Yoke kullanmanın temel nedeni nedir?",o:["Üretim hızını artırmak için","İnsanlar hata yaptığından hatalı üretimi otomatik olarak önlemek ve tespit etmek için","Operatör eğitim süresini kısaltmak için","Stokları azaltmak için"],a:1},
+{ch:"",q:"Poka Yoke cihazı arızalandığında ve Backup Mode yoksa ne yapılmalıdır?",o:["Hata olsa bile üretime devam etmek","Operatör kendi kararına göre kontrol eder","Üretim durdurulmalıdır","Final Inspection'da filtrelensin diye bırakmak"],a:2},
+{ch:"",q:"Poka Yoke doğrulamasından sonra hat veya istasyonda ne görüntülenir?",o:["Kırmızı uyarı lambası","Padlock (kilit sembolü)","Hata miktarı kayıt tablosu","İş tamamlandı etiketi"],a:1},
+{ch:"",q:"OK First Part ne zaman yapılır?",o:["Ayda bir düzenli olarak","Vardiya başlangıcında, ürün değişiminden sonra, teçhizat arızası gideriminden sonra","Yalnızca hata oluştuğunda","Yalnızca müşteri denetimi sırasında"],a:1},
+{ch:"",q:"OK First Part kontrol listesi doldurulurken her madde için ne işaretlenmelidir?",o:["Operatörün hissi (iyi/kötü)","Her maddenin OK veya NOK durumu","Üretim miktarı hedefi","Müşteri iletişim bilgileri"],a:1},
+{ch:"",q:"Aşağıdakilerden hangisi Check-Do-Check'te operatörün rolünü en iyi açıklar?",o:["Yalnızca üretim hedefine odaklanmak","İşten önce ve sonra kontrol ederek hata almamak, oluşturmamak ve geçirmemek","Kontrolü Final Inspection çalışanına devretmek","Hata bulunduğunda sonraki prosese geçirmek"],a:1},
+{ch:"",q:"Çalışma sırasında hatalı ürün bulunduğunda ilk yapılması gereken nedir?",o:["Sonraki prosese geçirip sonra raporlamak","Hata olarak işaretleyip belirlenen Bin'e ayırmak","Kendi kararına göre tamir edip üretime devam etmek","Vardiya sonunda toplu rapor sunmak"],a:1},
+{ch:"",q:"Check-Do-Check'te Tally Sheet kullanmanın amacı nedir?",o:["Operatörlerin giriş/çıkış saatlerini kaydetmek","Tespit edilen hataların türünü ve miktarını kaydetmek","Üretim hedefi gerçekleşme durumunu göstermek","Ekipman arıza geçmişini yönetmek"],a:1},
+{ch:"",q:"Final Inspection ne zaman yapılır?",o:["Hammadde girişinde","Üretim süreci boyunca sık sık","Son montaj aşamasından sonra, ambalajlamadan önce","Ürün müşteriye teslim edildikten sonra"],a:2},
+{ch:"",q:"TQW hangi durumda kurulur?",o:["Üretim süreci henüz kararlı olmadığında ve müşteriye hatalı ürün gitme riski olduğunda","Üretim hızını artırmak için kalıcı olarak kurulur","Personel yetersizliğinde kontrol yapmak için","Yeni ürün lansmanı anısına kurulur"],a:0},
+{ch:"",q:"Hatalı parça (NOK parça) bulunduğunda ilk yapılması gereken nedir?",o:["Hata olarak işaretleyip hemen iyi ürünlerden ayırmak","Üretim akışını bozmamak için olduğu gibi bırakmak","Vardiya sonunda toplu işlem yapmak","Final Inspection çalışanına devretmek"],a:0},
+{ch:"",q:"Yeniden işlenebilir hatalı ürüne yapıştırılan etiketin rengi nedir?",o:["Kırmızı (Red)","Yeşil (Green)","Sarı (Yellow)","Mavi (Blue)"],a:2},
+{ch:"",q:"Çevrimdışı yeniden işleme hakkında hangisi doğrudur?",o:["Hatta yapılması zor yeniden işlemelerin ayrı bir özel istasyonda yapılması","Herkesin boş alanda özgürce yapabileceği bir işlemdir","Yeniden işlemeden sonra ayrı kontrol yapılmaksızın doğrudan prosese alınır","Yeniden işleme sonuçları kaydedilmek zorunda değildir"],a:0},
+{ch:"",q:"Yeniden işlenen parçaya hata içeriğinin kaydedilmesi neden gereklidir?",o:["Operatör performans değerlendirmesinde kullanmak için","Gelecekteki müşteri şikayeti veya garanti iadesi durumunda izlenebilirliği sağlamak için","Yeniden işleme maliyetini müşteriye fatura etmek için","Kayıt zorunlu değil, tavsiye niteliğindedir"],a:1},
+{ch:"",q:"Kata QRCI üretim sahasında ağırlıklı olarak ne zaman kullanılır?",o:["Yıllık hedefler belirlenirken bir kez","Yalnızca müşteri denetiminde","Sorun oluştuğunda veya iyileştirme gerektiğinde her gün tekrarlı olarak","Yalnızca yeni çalışan eğitiminde"],a:2},
+{ch:"",q:"Kata QRCI sorunları çözmek için hangi döngüyü tekrarlar?",o:["Rapor→Onay→Uygulama→Tamamlama","Planla (Plan)→Uygula (Do)→Kontrol et (Check)→Önlem al (Act)","Tespit→İzole→İmha→Yeniden sipariş","Toplantı→Karar→Talimat→Değerlendirme"],a:1},
+{ch:"",q:"Kata QRCI'de önem verilen ekip katılım ilkesi hangisidir?",o:["Yalnızca yöneticiler fikir önerebilir","Operatör görüşleri referans amaçlı, karar yönetici tarafından alınır","Üretim operatörlerinin görüşü temeldir, çünkü süreci en iyi onlar bilir","Dış uzmanların görüşleri en yüksek önceliğe sahiptir"],a:2}],
+};
+════════════════════════════════════════════════
 // QUIZ (한국어 기준 — 추후 언어별 번역 확장 가능)
 // ══════════════════════════════════════════════════
 const QUIZ=[
@@ -801,9 +1100,18 @@ function openChapter(i){
   bw.textContent=watched?t('watchedBtn'):t('watchBtn');
   bw.style.background=watched?'#718096':'var(--blue)';
   // 개념 (영어 이외 언어는 conceptEn 표시, ko는 concept)
-  document.getElementById('ch-concept').textContent=curLang==='ko'?ch.concept:ch.conceptEn;
-  document.getElementById('ch-points').innerHTML=ch.points.map(p=>`<div class="point-chip"><div class="lbl">${p.l}</div><div class="val">${p.v}</div></div>`).join('');
-  document.getElementById('ch-req').innerHTML=ch.req.map(r=>`<li>${r}</li>`).join('');
+  // 언어별 데이터 선택: 해당 언어 → 영어 → 한국어 순으로 fallback
+  const getLangData = (field, fallback) => {
+    if(curLang === 'ko') return ch[field] || fallback;
+    return ch[`${field}_${curLang}`] || ch[`${field}En`] || ch[field] || fallback;
+  };
+  const pts = getLangData('points', ch.points);
+  const rqs = getLangData('req', ch.req);
+  const conceptText = curLang === 'ko' ? ch.concept
+    : ch[`concept_${curLang}`] || ch.conceptEn || ch.concept;
+  document.getElementById('ch-concept').textContent = conceptText;
+  document.getElementById('ch-points').innerHTML=pts.map(p=>`<div class="point-chip"><div class="lbl">${p.l}</div><div class="val">${p.v}</div></div>`).join('');
+  document.getElementById('ch-req').innerHTML=rqs.map(r=>`<li>${r}</li>`).join('');
   const bq=document.getElementById('btn-quiz');
   bq.textContent=qDone?`${t('quizRetryBtn')} (${score}/${ch.qIdx.length})`:t('quizBtn');
   showScreen('screen-chapter');
@@ -821,7 +1129,16 @@ function markWatched(){
 // ── QUIZ ─────────────────────────────────────────────
 function startQuiz(){
   const ch=CHAPTERS[curChIdx];
-  QS={qs:ch.qIdx.map(i=>QUIZ[i]),cur:0,score:0,chId:ch.id};
+  // 언어별 퀴즈 데이터 선택 (ko는 기본 QUIZ, 나머지는 QUIZ_LANG)
+  const langQuiz = (curLang !== 'ko' && QUIZ_LANG[curLang]) ? QUIZ_LANG[curLang] : null;
+  const qs = ch.qIdx.map(i => {
+    if(langQuiz && langQuiz[i]) {
+      // ch 필드는 원본 QUIZ에서 가져옴
+      return Object.assign({}, langQuiz[i], {ch: QUIZ[i].ch});
+    }
+    return QUIZ[i];
+  });
+  QS={qs,cur:0,score:0,chId:ch.id};
   renderQ();showScreen('screen-quiz');
 }
 function renderQ(){
@@ -876,7 +1193,15 @@ function finishQuiz(){
   document.getElementById('rb-retry').textContent=t('retry');
   showScreen('screen-result');
 }
-function retake(){QS.cur=0;QS.score=0;QS.qs=CHAPTERS[curChIdx].qIdx.map(i=>QUIZ[i]);renderQ();showScreen('screen-quiz')}
+function retake(){
+  const ch=CHAPTERS[curChIdx];
+  const langQuiz=(curLang!=='ko'&&QUIZ_LANG[curLang])?QUIZ_LANG[curLang]:null;
+  QS.qs=ch.qIdx.map(i=>{
+    if(langQuiz&&langQuiz[i]) return Object.assign({},langQuiz[i],{ch:QUIZ[i].ch});
+    return QUIZ[i];
+  });
+  QS.cur=0;QS.score=0;renderQ();showScreen('screen-quiz');
+}
 function quitQuiz(){if(confirm(t('quitConfirm')))showScreen('screen-chapter')}
 
 // ── ADMIN ─────────────────────────────────────────────
